@@ -1,4 +1,4 @@
-# SafeDITO - Virtual Assistant for Disaster, Disease and Emergency
+# SafeDITO Chatbot (Employee Assistance)
 
 ## Main Features
 * Daily / Weekly Health Check-in with Reporting Capabilities
@@ -24,11 +24,9 @@
 ![SafeDITO v2 Flowchart](/images/flowchart.png)
 
 
-
-
 ## Live Demo
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://safedito.github.io
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;https://safedito-v2.github.io
 
 
 ## Tech Stack
