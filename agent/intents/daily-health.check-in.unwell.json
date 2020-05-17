@@ -1,0 +1,88 @@
+{
+  "id": "96b84dfe-97a7-495c-a8cf-4eedf29c8a2c",
+  "name": "daily-health.check-in.unwell",
+  "auto": true,
+  "contexts": [
+    "daily-health-checkin",
+    "daily-health-unwell"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "daily-health-checkin",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "daily-health-unwell",
+          "parameters": {},
+          "lifespan": 0
+        },
+        {
+          "name": "set-details",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [
+        {
+          "id": "a3ad3a36-1256-4475-b553-04bae4baa012",
+          "required": false,
+          "dataType": "@healthstatus",
+          "name": "healthstatus",
+          "value": "$healthstatus",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "f51ae450-f0d4-44e7-bf32-4bbaa33e491b",
+          "required": false,
+          "dataType": "@sys.phone-number",
+          "name": "phone",
+          "value": "$phone",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#daily-health-checkin.phone",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "Example: With cough, fever, sorethroat, high temperature"
+                  ],
+                  "title": "Can you please tell us more about your symptoms?"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

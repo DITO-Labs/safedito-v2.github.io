@@ -1,0 +1,48 @@
+[
+  {
+    "id": "81335450-7573-4bd5-a75c-eefc9d27f65a",
+    "data": [
+      {
+        "text": "09123456789",
+        "alias": "phone",
+        "meta": "@sys.phone-number",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "cbc5779f-5611-4adc-992d-dde3a73fa458",
+    "data": [
+      {
+        "text": "09260797514",
+        "alias": "phone",
+        "meta": "@sys.phone-number",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ca1f049f-5258-40bb-97a6-8ce17b991573",
+    "data": [
+      {
+        "text": "My number is ",
+        "userDefined": false
+      },
+      {
+        "text": "09301234567",
+        "alias": "phone",
+        "meta": "@sys.phone-number",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

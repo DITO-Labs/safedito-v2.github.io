@@ -1,0 +1,57 @@
+{
+  "id": "52138f4f-8f06-4b81-a1f7-f6d042a394a3",
+  "name": "thanks",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "Feel free to type in your questions or select from the options below."
+                  ],
+                  "title": "You\u0027re welcome! Do you have any other concern?"
+                },
+                {
+                  "options": [
+                    {
+                      "text": "COVID-19 Task Force"
+                    },
+                    {
+                      "text": "Employee Assistance Program"
+                    },
+                    {
+                      "text": "Employee Wellbeing"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

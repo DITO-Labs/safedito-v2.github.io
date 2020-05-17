@@ -1,0 +1,67 @@
+{
+  "id": "d943441e-a4b4-4174-b25d-7afdb8a14adc",
+  "name": "covid-19-taskforce",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "dataprivacy",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "In this COVID-19 crisis, we care for your safety and well being"
+                  ],
+                  "title": "COVID-19 Task Force"
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "Daily Health Check-In"
+                    },
+                    {
+                      "text": "Weekly Health Check-In"
+                    },
+                    {
+                      "link": "https://endcov.ph/dashboard/",
+                      "text": "COVID-19 Dashboard"
+                    },
+                    {
+                      "text": "Frequently Asked Questions"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

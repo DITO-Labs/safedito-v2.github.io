@@ -1,0 +1,17 @@
+[
+  {
+    "value": "WFH",
+    "synonyms": [
+      "WFH",
+      "Work From Home"
+    ]
+  },
+  {
+    "value": "SF",
+    "synonyms": [
+      "Skeletal Force",
+      "Critical Skeletal Force",
+      "In-Office"
+    ]
+  }
+]

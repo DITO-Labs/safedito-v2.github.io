@@ -1,0 +1,86 @@
+[
+  {
+    "id": "df08f7cd-3a7b-4a86-a63c-b73dbce41100",
+    "data": [
+      {
+        "text": "sources",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "54a36a92-4b17-484a-b5f7-d4fe67cd6fec",
+    "data": [
+      {
+        "text": "Where are your sources?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "93e14e20-2aca-4f72-b158-25f450f321ec",
+    "data": [
+      {
+        "text": "fact check",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a962fb05-b616-4e74-ba2e-5ee5613e306b",
+    "data": [
+      {
+        "text": "Are these facts?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "c5c5d69b-a045-4cce-832a-7ecb640d6f9d",
+    "data": [
+      {
+        "text": "Where did you get these informations?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d9918552-385c-42ca-86b9-46bfce5d7f20",
+    "data": [
+      {
+        "text": "What are your sources?",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "1ed2745e-913d-416d-a37a-a1a80105d995",
+    "data": [
+      {
+        "text": "Source(s)",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

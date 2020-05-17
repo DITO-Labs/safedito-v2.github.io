@@ -1,0 +1,210 @@
+[
+  {
+    "id": "e99ab07a-a2dc-4401-9652-e348d4c70301",
+    "data": [
+      {
+        "text": "With ",
+        "userDefined": false
+      },
+      {
+        "text": "cough",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "fever",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "sorethroat",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "high temperature",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ea8b6f3f-2641-404f-8587-0792da63593c",
+    "data": [
+      {
+        "text": "high temperature",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "4b07e1eb-4a95-4f2a-8714-cdc89bc450dd",
+    "data": [
+      {
+        "text": "cough",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "e232b9a3-fc92-4fd3-8ed7-2fbbeb812a2f",
+    "data": [
+      {
+        "text": "i feel ",
+        "userDefined": false
+      },
+      {
+        "text": "uneasiness",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "fd4c7c05-010b-4d0f-b80e-7ac6a5caf2a3",
+    "data": [
+      {
+        "text": "high blood",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      },
+      {
+        "text": " with ",
+        "userDefined": false
+      },
+      {
+        "text": "mild colds",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "sorethroat",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a4b0c337-c2b0-498b-a6ca-19e2cb275ee8",
+    "data": [
+      {
+        "text": "cough",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      },
+      {
+        "text": ", ",
+        "userDefined": false
+      },
+      {
+        "text": "diarrhea",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "ae74b8c2-e79c-4480-aa9d-ef576d705f73",
+    "data": [
+      {
+        "text": "I have ",
+        "userDefined": false
+      },
+      {
+        "text": "sore throat",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      },
+      {
+        "text": " and ",
+        "userDefined": false
+      },
+      {
+        "text": "high fever",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "0e019a76-d9f0-4239-9ac4-e76fa40a8f2c",
+    "data": [
+      {
+        "text": "i have ",
+        "userDefined": false
+      },
+      {
+        "text": "fever",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      },
+      {
+        "text": " with ",
+        "userDefined": false
+      },
+      {
+        "text": "mild cold",
+        "alias": "details",
+        "meta": "@details",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

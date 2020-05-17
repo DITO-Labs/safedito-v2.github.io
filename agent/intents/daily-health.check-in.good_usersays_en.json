@@ -1,0 +1,57 @@
+[
+  {
+    "id": "9412e89d-f7c5-44c1-8f1e-2ef463ff3c12",
+    "data": [
+      {
+        "text": "1",
+        "alias": "healthstatus",
+        "meta": "@healthstatus",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "235cc1c4-ad74-47e2-bfc5-04cab6cea6e6",
+    "data": [
+      {
+        "text": "I\u0027m ",
+        "userDefined": false
+      },
+      {
+        "text": "good",
+        "alias": "healthstatus",
+        "meta": "@healthstatus",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d112e78c-16c3-4ac2-b91d-188da0bf79f2",
+    "data": [
+      {
+        "text": "1",
+        "meta": "@sys.ignore",
+        "userDefined": true
+      },
+      {
+        "text": ". Feeling ",
+        "userDefined": false
+      },
+      {
+        "text": "Good",
+        "alias": "healthstatus",
+        "meta": "@healthstatus",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

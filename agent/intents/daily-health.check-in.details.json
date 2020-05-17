@@ -1,0 +1,120 @@
+{
+  "id": "5b1139b2-5a6a-4938-8d46-96ccaab4aa67",
+  "name": "daily-health.check-in.details",
+  "auto": true,
+  "contexts": [
+    "set-details",
+    "daily-health-checkin"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "set-details",
+          "parameters": {},
+          "lifespan": 0
+        },
+        {
+          "name": "set-workcondition",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "daily-health-checkin",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [
+        {
+          "id": "65b0dc6b-88d6-4d91-929b-95d9453222db",
+          "required": false,
+          "dataType": "@sys.phone-number",
+          "name": "phone",
+          "value": "$phone",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#daily-health-checkin.phone",
+          "isList": false
+        },
+        {
+          "id": "b2425466-50ef-4599-a3e0-7ab21abc4f2d",
+          "required": true,
+          "dataType": "@details",
+          "name": "details",
+          "value": "$details",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Please tell us what\u0027s your symptoms so that we can help you better."
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": true
+        },
+        {
+          "id": "2bd55f16-b834-41a9-905d-dc3330ffe936",
+          "required": false,
+          "dataType": "@healthstatus",
+          "name": "healthstatus",
+          "value": "$healthstatus",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#daily-health-checkin.healthstatus",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "We hope you feel better.  Do know that we are here for you! Our Maxicare partners via the Teleconsult Service Hotline  will be able to help you assess your situation please  call +63 2 858 219 80.",
+                    "Keep us posted on your condition and email our People Group AskHR@dito.ph for anything we can be of assistance.",
+                    "$details"
+                  ],
+                  "title": "What is your current work situation?"
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "WFH"
+                    },
+                    {
+                      "text": "Skeletal Force"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

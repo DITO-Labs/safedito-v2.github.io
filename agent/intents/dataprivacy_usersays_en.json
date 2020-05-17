@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ab0c76e8-1429-4200-b800-5588dcf27968",
+    "data": [
+      {
+        "text": "self assessment",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "533655df-ba0e-4661-a809-f990059e0730",
+    "data": [
+      {
+        "text": "Daily Health Assessment",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "792198fb-77f5-4018-979f-d43c773bfeb6",
+    "data": [
+      {
+        "text": "Daily Health Check-In",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

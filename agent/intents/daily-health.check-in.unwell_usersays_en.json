@@ -1,0 +1,67 @@
+[
+  {
+    "id": "391f2dd3-a3b5-49af-93cf-419cd6d07c28",
+    "data": [
+      {
+        "text": "2",
+        "alias": "healthstatus",
+        "meta": "@healthstatus",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "734121cb-5bae-4812-b79a-d4d315b8d32a",
+    "data": [
+      {
+        "text": "Colds",
+        "alias": "healthstatus",
+        "meta": "@healthstatus",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "27b4215e-f2c1-4f8f-8a43-807f3f343356",
+    "data": [
+      {
+        "text": "Sick",
+        "alias": "healthstatus",
+        "meta": "@healthstatus",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "58223e12-7cc7-44bc-82f3-65eae2a5fbe7",
+    "data": [
+      {
+        "text": "2",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": ". Feeling ",
+        "userDefined": false
+      },
+      {
+        "text": "Unwell",
+        "alias": "healthstatus",
+        "meta": "@healthstatus",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

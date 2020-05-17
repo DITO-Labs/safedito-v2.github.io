@@ -1,0 +1,53 @@
+{
+  "id": "86bdea48-1701-46f1-9349-aabde2eb0287",
+  "name": "daily-health.check-in.save",
+  "auto": true,
+  "contexts": [
+    "daily-health-checkin"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "daily-health-checkin",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
+      "parameters": [
+        {
+          "id": "bad52a67-29a4-4941-96b9-377693413436",
+          "required": false,
+          "dataType": "@sys.phone-number",
+          "name": "mobile",
+          "value": "$mobile",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#daily-health-checkin.mobile",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

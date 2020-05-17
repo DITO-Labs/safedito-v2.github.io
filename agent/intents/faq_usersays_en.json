@@ -1,0 +1,50 @@
+[
+  {
+    "id": "0a0339b3-c377-4707-ba4b-90bddf787871",
+    "data": [
+      {
+        "text": "Can I ask you a question",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "1d56c96b-0373-4fd0-8132-24a93bc0224d",
+    "data": [
+      {
+        "text": "I have a question",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "1bf1a879-db83-443f-a8d5-a165b2731dcd",
+    "data": [
+      {
+        "text": "Frequently Asked Questions",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "3ea5ad33-2c55-4156-9213-d80d8e33c07d",
+    "data": [
+      {
+        "text": "FAQ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

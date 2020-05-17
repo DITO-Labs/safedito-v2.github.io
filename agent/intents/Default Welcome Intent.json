@@ -1,0 +1,63 @@
+{
+  "id": "a7f0ab0e-b5a7-4ee1-a93e-32e96c9b11cd",
+  "name": "Default Welcome Intent",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.welcome",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "title": "Hello DITO Employee!",
+                  "type": "description",
+                  "text": [
+                    "I am SafeDITO and I am your virtual assistant for safety, emergencies and disaster.",
+                    "How can I help you?"
+                  ]
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "COVID-19 Task Force"
+                    },
+                    {
+                      "text": "Employee Assistance Program"
+                    },
+                    {
+                      "text": "Employee Wellbeing"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "WELCOME"
+    }
+  ],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

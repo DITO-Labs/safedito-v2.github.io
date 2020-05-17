@@ -1,0 +1,72 @@
+{
+  "id": "b2205b64-04f6-46d5-80ba-8f5f7c39e2a4",
+  "name": "faq.sources",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "title": "Here are the list of my sources and knowledge providers:"
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "info",
+                  "title": "Department of Health (DOH)",
+                  "actionLink": "https://www.doh.gov.ph/COVID-19/FAQs"
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "info",
+                  "title": "World Health Organization (WHO)",
+                  "actionLink": "https://www.who.int/emergencies/diseases/novel-coronavirus-2019/question-and-answers-hub/q-a-detail/q-a-coronaviruses"
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "list",
+                  "title": "Centers for Disease Control and Prevention (CDC)",
+                  "actionLink": "https://www.cdc.gov/coronavirus/2019-ncov/faq.html"
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "list",
+                  "title": "MedicineNet.com",
+                  "actionLink": "https://www.medicinenet.com/trauma_and_first_aid_quiz/faq.htm"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

@@ -1,0 +1,58 @@
+{
+  "id": "56a83808-3bca-4daf-b9c6-51d0f8109398",
+  "name": "Default Fallback Intent",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "input.unknown",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "Can you please try rephrasing it again?"
+                  ],
+                  "title": "Ooops! Sorry I didn\u0027t get that"
+                },
+                {
+                  "options": [
+                    {
+                      "text": "COVID-19 Task Force"
+                    },
+                    {
+                      "text": "Employee Assistance Program"
+                    },
+                    {
+                      "text": "Employee Wellbeing"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": true,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

@@ -1,0 +1,77 @@
+{
+  "id": "4cd6b319-fba0-4baf-832c-6efd38e585ec",
+  "name": "dataprivacy",
+  "auto": true,
+  "contexts": [
+    "dataprivacy"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "dataprivacy-no",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "dataprivacy-yes",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "dataprivacy",
+          "parameters": {},
+          "lifespan": 0
+        },
+        {
+          "name": "dataprivacy-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "Pursuant to Republic Act 10173- Data Privacy Act of 2012, I hereby authorize DITO Telecommunity Corporation (employer) to gather, store, update and disclose my personal information in case required by the government authorities and contact details as provided above."
+                  ],
+                  "title": "Are you ready to get started??"
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "Yes"
+                    },
+                    {
+                      "text": "No"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

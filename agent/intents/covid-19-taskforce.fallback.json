@@ -1,0 +1,75 @@
+{
+  "id": "4b07dda0-3b2c-446c-9bec-b3712a3c74fc",
+  "name": "covid-19-taskforce.fallback",
+  "auto": true,
+  "contexts": [
+    "daily-health-checkin",
+    "weekly-health-checkin"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "daily-health-checkin",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "weekly-health-checkin",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "title": "If you want to get health check-in again, just let me know. ",
+                  "type": "description",
+                  "text": [
+                    "Thank you for your time and let’s stay connected. #DITOTayo #DITOWeCare"
+                  ]
+                },
+                {
+                  "options": [
+                    {
+                      "text": "Daily Health Check-In"
+                    },
+                    {
+                      "text": "Weekly Health Check-In"
+                    },
+                    {
+                      "text": "COVID-19 Dashboard",
+                      "link": "https://endcov.ph/dashboard/"
+                    },
+                    {
+                      "text": "Frequently Asked Questions"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

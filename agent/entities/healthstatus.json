@@ -1,0 +1,9 @@
+{
+  "id": "eb066893-3cf6-4a62-9407-60d59414d5d4",
+  "name": "healthstatus",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}

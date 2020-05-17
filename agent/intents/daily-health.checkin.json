@@ -1,0 +1,100 @@
+{
+  "id": "a1d75f6b-5950-4709-9399-1f122cc1d4b5",
+  "name": "daily-health.checkin",
+  "auto": true,
+  "contexts": [
+    "daily-health-checkin"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "daily-health-checkin",
+          "parameters": {},
+          "lifespan": 2
+        },
+        {
+          "name": "daily-health-good",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "daily-health-unwell",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "daily-health-anxious",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [
+        {
+          "id": "2acdab5b-d9bb-40a8-9a04-32e0b2076e7b",
+          "required": true,
+          "dataType": "@sys.phone-number",
+          "name": "phone",
+          "value": "$phone",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Please enter a correct phone number format"
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#daily-health-checkin.phone",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "We would like to keep in touch with you regularly and see how you are doing, especially during COVID-19 crisis. Kasi #DITOWeCare."
+                  ],
+                  "title": "How are you feeling for today?"
+                },
+                {
+                  "options": [
+                    {
+                      "text": "1. Feeling Good"
+                    },
+                    {
+                      "text": "2. Feeling Unwell"
+                    },
+                    {
+                      "text": "3. Feeling Anxious"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

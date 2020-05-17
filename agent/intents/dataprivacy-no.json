@@ -1,0 +1,65 @@
+{
+  "id": "1ef29fb3-8022-47b2-9ef7-00368ebeaee5",
+  "name": "dataprivacy-no",
+  "auto": true,
+  "contexts": [
+    "dataprivacy-no"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "dataprivacy.dataprivacy-no",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "title": "If you want to get health screening again, just let me know.",
+                  "type": "description",
+                  "text": [
+                    "Thank you for your time and let’s stay connected. #DITOTayo #DITOWeCare"
+                  ]
+                }
+              ],
+              [
+                {
+                  "options": [
+                    {
+                      "text": "COVID-19 Task Force"
+                    },
+                    {
+                      "text": "Employee Assistance Program"
+                    },
+                    {
+                      "text": "Employee Well Being"
+                    },
+                    {
+                      "text": "Frequently Asked Questions"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "value": "1",
+    "synonyms": [
+      "1",
+      "Good",
+      "Normal",
+      "1. Feeling Good"
+    ]
+  },
+  {
+    "value": "2",
+    "synonyms": [
+      "2",
+      "Sick",
+      "Unwell",
+      "Cough",
+      "Fever",
+      "Sore throat",
+      "sorethroat",
+      "colds",
+      "Flu",
+      "Not feeling well",
+      "2. Feeling Unwell"
+    ]
+  },
+  {
+    "value": "3",
+    "synonyms": [
+      "3",
+      "Anxious",
+      "3. Feeling Anxious"
+    ]
+  }
+]

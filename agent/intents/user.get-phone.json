@@ -1,0 +1,56 @@
+{
+  "id": "973578a2-7e59-4b07-9f6e-743bfcbee6aa",
+  "name": "user.get-phone",
+  "auto": true,
+  "contexts": [
+    "dataprivacy-yes"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "dataprivacy-yes",
+          "parameters": {},
+          "lifespan": 0
+        },
+        {
+          "name": "daily-health-checkin",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "Example: 09301234567"
+                  ],
+                  "title": "To provide you a better service, please enter your DingTalk mobile number"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

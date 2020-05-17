@@ -1,0 +1,9 @@
+{
+  "id": "bb5bdefe-7bd0-429a-8154-299eafa3f860",
+  "name": "workcondition",
+  "isOverridable": true,
+  "isEnum": false,
+  "isRegexp": false,
+  "automatedExpansion": false,
+  "allowFuzzyExtraction": false
+}

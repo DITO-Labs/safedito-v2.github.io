@@ -1,0 +1,99 @@
+{
+  "id": "f2af9648-f695-43d0-8fe7-ee3910b00a2b",
+  "name": "daily-health.check-in.good",
+  "auto": true,
+  "contexts": [
+    "daily-health-checkin",
+    "daily-health-good"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "daily-health-checkin",
+          "parameters": {},
+          "lifespan": 2
+        },
+        {
+          "name": "daily-health-good",
+          "parameters": {},
+          "lifespan": 0
+        },
+        {
+          "name": "set-workcondition",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
+      "parameters": [
+        {
+          "id": "01558f2d-e27d-4359-b01e-7fbea4dd6d6f",
+          "required": false,
+          "dataType": "@sys.phone-number",
+          "name": "phone",
+          "value": "$phone",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#daily-health-checkin.phone",
+          "isList": false
+        },
+        {
+          "id": "8da345f5-4e30-48da-a420-cd0378eb980a",
+          "required": false,
+          "dataType": "@healthstatus",
+          "name": "healthstatus",
+          "value": "$healthstatus",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "title": "What is your current work situation?",
+                  "type": "description",
+                  "text": [
+                    "Happy to know that all is well with you.  Keep in mind that we are in this together! Catch up again tomorrow."
+                  ]
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "WFH"
+                    },
+                    {
+                      "text": "Skeletal Force"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

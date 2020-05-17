@@ -1,0 +1,60 @@
+{
+  "id": "6857e4ca-a893-4c02-9ab5-be9cd0252141",
+  "name": "faq",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "You can choose from the options below, or you can type in your questions."
+                  ],
+                  "title": "Frequently Asked Questions (FAQ)"
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "Where did you get these informations?"
+                    },
+                    {
+                      "text": "COVID-19 Symptoms"
+                    },
+                    {
+                      "text": "How can I protect myself from COVID-19 virus?"
+                    },
+                    {
+                      "text": "What are the best way to clean wounds?"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

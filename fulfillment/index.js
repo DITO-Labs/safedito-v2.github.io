@@ -6,7 +6,9 @@ const { Payload } = require('dialogflow-fulfillment');
 const { Card, Suggestion } = require("dialogflow-fulfillment");
 const mysql = require("mysql");
 
+// custom variables
 let phone = "";
+let isOverwriteDailyReports = true;
 
 process.env.DEBUG = "dialogflow:debug"; // enables lib debugging statements
 
@@ -31,8 +33,15 @@ function connectToDatabase() {
 
 function saveHealthAssessment(connection, data) {
   console.log("method: saveHealthAssessment()");
+  let updateQuery = "update daily_health_logs set isValid = 0 where CAST(timestamp as DATE) = CURDATE() and emp_id = '" + data.emp_id + "'; ";
+  connection.query(updateQuery);
+  // console.log("1 = " + updateQuery);
+  // console.log("2 = " + data.emp_id);
+  // console.log("3 = '" + data.emp_id + "'");
+  let query = "insert into daily_health_logs set ?";
+  console.log(query, data);
   return new Promise((resolve, reject) => {
-    connection.query(`insert into daily_health_logs set ?`, data,
+    connection.query(query, data,
       (error, results, fields) => {
         resolve(results);
       }
@@ -46,15 +55,17 @@ function addDummyPayload(agent) {
 
 function saveHealthAssessmentHandler(agent) {
   console.log("method: saveHealthAssessmentHandler()");
+  // Work Condition | Symptoms
+  let info = agent.parameters.workcondition + "; " + agent.parameters.details.toString();
   const data = {
-    emp_id: phone,
+    emp_id: agent.parameters.phone,
     isValid: 1,
     status: agent.parameters.healthstatus,
-    details: agent.parameters.workcondition
+    details: info,
   };
+  console.log(data);
   return connectToDatabase().then((connection) => {
     try {
-      console.log(data);
       return saveHealthAssessment(connection, data).then((result) => {
         console.log(result);
         connection.end();
@@ -77,25 +88,18 @@ function setPhoneHandler(agent) {
     console.log("Getting phone from session: " + phone);
   }
 
-  agent.setFollowupEvent("daily-health-checkin");
+  agent.setFollowupEvent("daily-health-checkin-handler");
   addDummyPayload(agent);
   return;
 }
 
 function getPhoneHandler(agent) {
   console.log("method: getPhoneHandler()");
-  // get dingtalk phone here if possible, for checking
+  // insert logic here: get dingtalk phone here if possible, for checking
+
   if (!phone) {
     phone = agent.parameters.phone;
-    console.log("Setting phone from parameter: " + phone);
-    agent.setFollowupEvent("user-set-phone");
-    addDummyPayload(agent);
-    return;
   }
-  console.log("Getting phone from session: " + phone);
-  agent.setFollowupEvent("daily-health-checkin");
-  addDummyPayload(agent);
-  return;
 }
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
@@ -127,11 +131,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
     intentMap.set("dingtalk.login", dingtalkLoginHandler);
+
+    // save health assessment logs
     intentMap.set("daily-health.checkin.work-condition", saveHealthAssessmentHandler);
 
     // search for user by phone & search for daily checkin
-    intentMap.set("user-set-phone", setPhoneHandler);
-    intentMap.set("user-get-phone", getPhoneHandler);
+    intentMap.set("daily-health.checkin", getPhoneHandler);
+
 
     // intentMap.set("intro", yourFunctionHandler);
     // intentMap.set('your intent name here', googleAssistantHandler);
