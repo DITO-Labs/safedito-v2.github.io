@@ -1,0 +1,17 @@
+{
+    "richContent": [
+      [
+        {
+          "type": "info",
+          "title": "Info item title",
+          "subtitle": "Info item subtitle",
+          "image": {
+            "src": {
+              "rawUrl": "https://example.com/images/logo.png"
+            }
+          },
+          "actionLink": "https://example.com"
+        }
+      ]
+    ]
+}

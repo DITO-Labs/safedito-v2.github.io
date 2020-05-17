@@ -1,0 +1,11 @@
+{
+    "richContent": [
+      [
+        {
+          "type": "image",
+          "rawUrl": "https://example.com/images/logo.png",
+          "accessibilityText": "Example logo"
+        }
+      ]
+    ]
+}

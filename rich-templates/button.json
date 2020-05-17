@@ -1,0 +1,20 @@
+{
+    "richContent": [
+      [
+        {
+          "type": "button",
+          "icon": {
+            "type": "",
+            "color": "#FF9800"
+          },
+          "text": "Button text",
+          "link": "https://example.com",
+          "event": {
+            "name": "",
+            "languageCode": "",
+            "parameters": {}
+          }
+        }
+      ]
+    ]
+}

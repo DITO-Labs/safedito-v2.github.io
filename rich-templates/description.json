@@ -1,0 +1,14 @@
+{
+    "richContent": [
+      [
+        {
+          "type": "description",
+          "title": "Description title",
+          "text": [
+            "This is text line 1.",
+            "This is text line 2."
+          ]
+        }
+      ]
+    ]
+}

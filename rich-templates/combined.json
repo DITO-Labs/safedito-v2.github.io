@@ -1,0 +1,30 @@
+{
+    "richContent": [
+      [
+        {
+          "type": "image",
+          "rawUrl": "https://example.com/images/logo.png",
+          "accessibilityText": "Dialogflow across platforms"
+        },
+        {
+          "type": "info",
+          "title": "Dialogflow",
+          "subtitle": "Build natural and rich conversational experiences",
+          "actionLink": "https://cloud.google.com/dialogflow/docs"
+        },
+        {
+          "type": "chips",
+          "options": [
+            {
+              "text": "Case Studies",
+              "link": "https://cloud.google.com/dialogflow/case-studies"
+            },
+            {
+              "text": "Docs",
+              "link": "https://cloud.google.com/dialogflow/docs"
+            }
+          ]
+        }
+      ]
+    ]
+}

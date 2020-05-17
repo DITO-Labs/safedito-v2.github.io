@@ -1,0 +1,22 @@
+{
+    "richContent": [
+      [
+        {
+          "title": "Please email it.admin@dito.ph and wait for a workchat message from one of our IT Colleagues re your request.",
+          "subtitle": "You can expect to hear from them within 3 hours.",
+          "type": "info"
+        },
+        {
+          "type": "chips",
+          "options": [
+            {
+              "text": "Great! Thanks"
+            },
+            {
+              "text": "Ask Something Else"
+            }
+          ]
+        }
+      ]
+    ]
+  }
