@@ -1,0 +1,75 @@
+{
+  "id": "b540733b-3f3d-48f1-a2d4-f3c7a72df886",
+  "name": "daily-health.check-in.anxious",
+  "auto": true,
+  "contexts": [
+    "daily-health-checkin",
+    "daily-health-anxious"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "daily-health-checkin",
+          "parameters": {},
+          "lifespan": 2
+        },
+        {
+          "name": "daily-health-anxious",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "daily-healthcheck-inanxious-followup",
+          "parameters": {},
+          "lifespan": 2
+        }
+      ],
+      "parameters": [
+        {
+          "id": "47443e81-8853-4661-9a75-975f4a5e1489",
+          "required": false,
+          "dataType": "@healthstatus",
+          "name": "healthstatus",
+          "value": "$healthstatus",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "title": "Can you please tell us more on why are you anxious today?",
+                  "type": "description",
+                  "text": [
+                    "Your mental wellbeing is very important to us. Kindly tell us the details so our experts can help you better."
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

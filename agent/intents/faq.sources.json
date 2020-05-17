@@ -18,7 +18,8 @@
               [
                 {
                   "type": "description",
-                  "title": "Here are the list of my sources and knowledge providers:"
+                  "text": "hello world",
+                  "title": "Current List of KnowledgeBase Source(s):"
                 },
                 {
                   "type": "divider"
@@ -40,7 +41,7 @@
                   "type": "divider"
                 },
                 {
-                  "type": "list",
+                  "type": "info",
                   "title": "Centers for Disease Control and Prevention (CDC)",
                   "actionLink": "https://www.cdc.gov/coronavirus/2019-ncov/faq.html"
                 },
@@ -48,9 +49,17 @@
                   "type": "divider"
                 },
                 {
-                  "type": "list",
-                  "title": "MedicineNet.com",
-                  "actionLink": "https://www.medicinenet.com/trauma_and_first_aid_quiz/faq.htm"
+                  "type": "info",
+                  "title": "Optum Employee Assistance Program",
+                  "actionLink": "https://optumeap.com/"
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "type": "info",
+                  "title": "National Center for Mental Health",
+                  "actionLink": "http://www.ncmh.gov.ph"
                 }
               ]
             ]

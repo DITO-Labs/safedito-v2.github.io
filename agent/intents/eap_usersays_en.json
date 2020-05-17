@@ -1,0 +1,50 @@
+[
+  {
+    "id": "5d9a498c-cca5-462e-b5cd-4da0f97bb565",
+    "data": [
+      {
+        "text": "EAP",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "743dab9a-f680-4002-9252-75df72dc6b01",
+    "data": [
+      {
+        "text": "Well-being",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "fcdb0647-88a4-4435-8632-b448241704bd",
+    "data": [
+      {
+        "text": "Employee Wellbeing",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "401a26c1-320b-43ee-b649-bf2d09b9bae7",
+    "data": [
+      {
+        "text": "Employee Assistance Program",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

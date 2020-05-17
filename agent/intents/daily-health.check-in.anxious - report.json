@@ -1,0 +1,35 @@
+{
+  "id": "9f9877f9-555c-4409-94e5-ae917b45aae1",
+  "name": "daily-health.check-in.anxious - report",
+  "auto": true,
+  "contexts": [
+    "daily-health-checkin",
+    "daily-health-anxious"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "action": "daily-healthcheck-inanxious.daily-healthcheck-inanxious-custom",
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

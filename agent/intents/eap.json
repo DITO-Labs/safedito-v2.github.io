@@ -1,0 +1,64 @@
+{
+  "id": "48bf227d-4b6d-4fcf-b365-83342859bc2a",
+  "name": "eap",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "image",
+                  "rawUrl": "https://raw.githubusercontent.com/safedito-v2/safedito-v2.github.io/master/images/info-graphics/eap.png",
+                  "accessibilityText": "Employee Assistance Program"
+                },
+                {
+                  "type": "info",
+                  "title": "DITO Employee Assistance Program (EAP)",
+                  "actionLink": "https://optumeap.com/",
+                  "subtitle": "Facts and resources about COVID-19 and tips for keeping employees educated, healthy and engaged."
+                },
+                {
+                  "options": [
+                    {
+                      "link": "http://www.ncmh.gov.ph/images/pdf/docs/ncmhcovid19publicadvise.pdf",
+                      "text": "COVID-19 Mental Health Guide "
+                    },
+                    {
+                      "text": "Visit OPTUM website",
+                      "link": "https://optumeap.com/"
+                    },
+                    {
+                      "link": "http://www.ncmh.gov.ph/",
+                      "text": "Visit National Center for Mental Health"
+                    }
+                  ],
+                  "type": "chips"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

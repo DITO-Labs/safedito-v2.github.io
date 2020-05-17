@@ -23,6 +23,11 @@
             "richContent": [
               [
                 {
+                  "type": "image",
+                  "rawUrl": "https://raw.githubusercontent.com/safedito-v2/safedito-v2.github.io/master/images/taskforce-banner.PNG",
+                  "accessibilityText": "DITO Safety Task Force"
+                },
+                {
                   "type": "description",
                   "text": [
                     "In this COVID-19 crisis, we care for your safety and well being"
@@ -30,7 +35,6 @@
                   "title": "COVID-19 Task Force"
                 },
                 {
-                  "type": "chips",
                   "options": [
                     {
                       "text": "Daily Health Check-In"
@@ -39,13 +43,14 @@
                       "text": "Weekly Health Check-In"
                     },
                     {
-                      "link": "https://endcov.ph/dashboard/",
-                      "text": "COVID-19 Dashboard"
+                      "text": "COVID-19 Dashboard",
+                      "link": "https://endcov.ph/dashboard/"
                     },
                     {
                       "text": "Frequently Asked Questions"
                     }
-                  ]
+                  ],
+                  "type": "chips"
                 }
               ]
             ]
