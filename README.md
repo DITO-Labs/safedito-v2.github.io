@@ -10,6 +10,7 @@
     * [Centers for Disease Control (CDC)](https://www.cdc.gov/coronavirus/2019-ncov/faq.html)
     * [University of the Philippines' Covid-19 Web Portal](https://endcov.ph/dashboard/)
     * [Metropolitan Manila Development Authority (MMDA)](http://www.mmda.gov.ph/20-faq/288-disaster-awareness-faq.html)
+    * [National Disaster Risk Reduction and Management Council(NDRRMC)](www.ndrrmc.gov.ph)
 
 
 ## Supported Topics:
@@ -57,3 +58,8 @@
 ## TO DO:
 1. Improve the content and UI/UX in `index.html`
 2. Improve knowledgebase, intents and conversation skills
+
+## Infographics
+Aside from mentioned sources above, we used some infographics that are publicly available in the web. Below are the sources of this graphics:
+1. chatbot-banner.svg (https://www.nellinfotech.com/chatbot-products)
+2. emergency-hotlines.jpg (https://news.mb.com.ph)
