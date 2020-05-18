@@ -61,11 +61,13 @@ function addDummyPayload(agent) {
 
 function saveHealthAssessmentHandler(agent) {
   console.log("method: saveHealthAssessmentHandler()");
+  console.log("saved data: " + workcond + " | " + healthstatus + " | " + phone);
   workcond = (workcond) ? workcond : agent.parameters.workcondition;
   healthstatus = (healthstatus) ? healthstatus : agent.parameters.healthstatus;
   phone = (phone) ? phone : agent.parameters.phone;
   var info = '';
 
+  console.log(agent.parameters);
   // Decide which followup event before database query
   if (healthstatus == 1) {         // 1. Feeling Good
     info = workcond;
@@ -83,7 +85,7 @@ function saveHealthAssessmentHandler(agent) {
     }
   } else if (healthstatus == 3) {  // 3. Feeling Anxious
     info = workcond + " | " + emailQuery;
-    agent.setFollowupEvent('response-anxious');
+    agent.setFollowupEvent('send-email');
   }
   addDummyPayload(agent);
 
@@ -94,7 +96,7 @@ function saveHealthAssessmentHandler(agent) {
     status: healthstatus,
     details: info,
   };
-  console.log("Data: " + data);
+  console.log("Data: " + JSON.stringify(data));
 
   // finally, log transaction to database:
   return connectToDatabase().then((connection) => {
@@ -104,6 +106,8 @@ function saveHealthAssessmentHandler(agent) {
       });
     } catch (error) {
       agent.add("Exception encountered " + error);
+    } finally {
+      workcond = healthstatus = phone = '';
     }
   });
 }
@@ -158,11 +162,13 @@ function sendEmailHandler(agent) {
   console.log(mailOptions);
   transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
+      agent.add('Unable to send email - ' + err);
       console.log(err);
-    } else {
-      agent.add("Email sent!");
+      return;
     }
   });
+  agent.setFollowupEvent('send-email-confirmation');
+  addDummyPayload(agent);
 }
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
@@ -195,11 +201,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     let intentMap = new Map();
     intentMap.set("dingtalk.login", dingtalkLoginHandler);
     intentMap.set("daily-health.check-in.work-condition", saveHealthAssessmentHandler);
-    intentMap.set("response-anxious", sendEmailHandler);
+    intentMap.set("send-email", sendEmailHandler);
     intentMap.set("daily-health.checkin", getPhoneHandler);
     intentMap.set("daily-health.check-in.anxious-query", getQueryHandler);
-
-
     agent.handleRequest(intentMap);
   }
 );
