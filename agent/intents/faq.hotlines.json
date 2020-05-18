@@ -6,7 +6,13 @@
   "responses": [
     {
       "resetContexts": false,
-      "affectedContexts": [],
+      "affectedContexts": [
+        {
+          "name": "hotlines-more",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
       "parameters": [],
       "messages": [
         {
@@ -33,7 +39,6 @@
                   "actionLink": "http://www.officialgazette.gov.ph/"
                 },
                 {
-                  "type": "chips",
                   "options": [
                     {
                       "text": "More"
@@ -41,7 +46,8 @@
                     {
                       "text": "Thank you!"
                     }
-                  ]
+                  ],
+                  "type": "chips"
                 }
               ]
             ]

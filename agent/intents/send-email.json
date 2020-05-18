@@ -1,16 +1,23 @@
 {
-  "id": "9f9877f9-555c-4409-94e5-ae917b45aae1",
-  "name": "daily-health.check-in.anxious - report",
+  "id": "5357d0d6-7fa4-43a0-9458-3a99f47c8aa2",
+  "name": "send-email",
   "auto": true,
-  "contexts": [
-    "daily-health-checkin",
-    "daily-health-anxious"
-  ],
+  "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "action": "daily-healthcheck-inanxious.daily-healthcheck-inanxious-custom",
-      "affectedContexts": [],
+      "affectedContexts": [
+        {
+          "name": "send-email-successful",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "send-email-failed",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
       "parameters": [],
       "messages": [
         {
@@ -25,10 +32,14 @@
     }
   ],
   "priority": 500000,
-  "webhookUsed": false,
+  "webhookUsed": true,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
-  "events": [],
+  "events": [
+    {
+      "name": "send-email"
+    }
+  ],
   "conditionalResponses": [],
   "condition": "",
   "conditionalFollowupEvents": []

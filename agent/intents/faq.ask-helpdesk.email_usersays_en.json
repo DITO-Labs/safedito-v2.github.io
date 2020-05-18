@@ -1,0 +1,38 @@
+[
+  {
+    "id": "e057b026-3b36-4722-971c-11de07338fb5",
+    "data": [
+      {
+        "text": "Transportation",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "879e01b1-953f-4c85-bf53-9f446ccd7bad",
+    "data": [
+      {
+        "text": "Accommodation",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a66f06a0-7663-44a0-babb-4506e22452d0",
+    "data": [
+      {
+        "text": "PPE Supplies",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

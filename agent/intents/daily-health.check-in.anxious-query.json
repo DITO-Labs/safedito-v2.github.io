@@ -22,7 +22,7 @@
       ],
       "parameters": [
         {
-          "id": "7eba9f23-a45e-470f-b1d4-a54931f80e9d",
+          "id": "cbd72588-1c70-4764-a08f-af8d5d345ec7",
           "required": false,
           "dataType": "@sys.phone-number",
           "name": "phone",
@@ -35,7 +35,7 @@
           "isList": false
         },
         {
-          "id": "3b24ed58-778c-4199-a804-c0173bf30c3d",
+          "id": "b5048cf9-123e-4dc2-8c14-216b0c2858e6",
           "required": false,
           "dataType": "@healthstatus",
           "name": "healthstatus",
@@ -50,10 +50,33 @@
       ],
       "messages": [
         {
-          "type": 0,
+          "type": 4,
           "lang": "en",
           "condition": "",
-          "speech": "What is your work condition?"
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "We hope you feel better. To further help you, we need to know your current work setup."
+                  ],
+                  "title": "What is your current work situation?"
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "WFH"
+                    },
+                    {
+                      "text": "Skeletal Force"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
         }
       ],
       "defaultResponsePlatforms": {},

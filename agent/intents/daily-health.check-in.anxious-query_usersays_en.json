@@ -1,6 +1,136 @@
 [
   {
-    "id": "6752463a-da5e-46c0-b425-d02217347379",
+    "id": "ab656146-cc2d-4151-94ae-f1e8201e646b",
+    "data": [
+      {
+        "text": "I feel stress in work and I need some vacation",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "10803e90-e409-4b29-8a90-d1f9722e182c",
+    "data": [
+      {
+        "text": "I am ",
+        "userDefined": false
+      },
+      {
+        "text": "sick",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d735d6ed-fffa-4de6-9332-77c6a75b2975",
+    "data": [
+      {
+        "text": "I am seriously medically ill",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "0ff0971b-615e-4d46-bd50-37415b27fffe",
+    "data": [
+      {
+        "text": "I think I have covid-19",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "35407acf-5dd6-439d-9513-aea3fa2381f4",
+    "data": [
+      {
+        "text": "My parents are ",
+        "userDefined": false
+      },
+      {
+        "text": "sick",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "5c17aceb-0cc9-4148-bdf4-e5aac3cb9d69",
+    "data": [
+      {
+        "text": "Stress from an emotional trauma such as the death of a loved one",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a8977727-b476-43c0-bfb4-de37056e49fc",
+    "data": [
+      {
+        "text": "Financial stress and financial problem",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "899b8a33-0916-42e5-bb1f-56524f437225",
+    "data": [
+      {
+        "text": "Stress in a personal relationship such as marriage",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "d6fe9f4a-5627-4fe0-ac17-e23861f1e4a3",
+    "data": [
+      {
+        "text": "I need some vacation",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "f909e3e3-b0a1-42fb-89b3-e582789b3e04",
+    "data": [
+      {
+        "text": "I\u0027m stressed at work and i want to work from home",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "8ae2a8ba-4a88-4bba-b7e1-a71078e10bba",
     "data": [
       {
         "text": "I don\u0027t have food to eat",
@@ -12,7 +142,7 @@
     "updated": 0
   },
   {
-    "id": "f99909ac-076c-4b2a-8856-f9712faec7c1",
+    "id": "088c1ef2-9635-43f0-b103-d5150fcf14f4",
     "data": [
       {
         "text": "I miss my husband",
@@ -24,7 +154,7 @@
     "updated": 0
   },
   {
-    "id": "a2f87def-0884-4a10-9e10-d96973e7ba30",
+    "id": "38bcd1e1-b008-47cf-b1be-aad46b97efb5",
     "data": [
       {
         "text": "I miss my wife",
@@ -36,7 +166,7 @@
     "updated": 0
   },
   {
-    "id": "fb3bc101-e2c1-497c-a9bd-8a784b7278c4",
+    "id": "ece83374-197b-4c47-b779-371ff9ee5f18",
     "data": [
       {
         "text": "I miss my family",
@@ -48,7 +178,7 @@
     "updated": 0
   },
   {
-    "id": "fcc20d89-a59f-4b24-bb34-6838f8a22d25",
+    "id": "872ceb6d-83c6-49f8-ab8c-5a2fe6169929",
     "data": [
       {
         "text": "My boyfriend broke with me",
@@ -60,7 +190,7 @@
     "updated": 0
   },
   {
-    "id": "6e67b963-751f-40b2-8ad3-b59b5700e715",
+    "id": "db8d8bbc-4aa6-4a36-9525-04f209671138",
     "data": [
       {
         "text": "My girlfriend left me",
@@ -72,7 +202,7 @@
     "updated": 0
   },
   {
-    "id": "6074c9b2-6d8e-437d-af94-c3570b9f20dd",
+    "id": "d465bef6-140a-4ede-8c19-89e59daec8a8",
     "data": [
       {
         "text": "I\u0027m broken hearted",
@@ -84,7 +214,7 @@
     "updated": 0
   },
   {
-    "id": "248e598a-2dd9-44f6-a5ed-0cbe06fdd746",
+    "id": "82f6e103-a9b6-415e-902e-5169c7a2b10d",
     "data": [
       {
         "text": "My love ",
@@ -105,7 +235,7 @@
     "updated": 0
   },
   {
-    "id": "768322f4-9251-4812-bab7-15976477135c",
+    "id": "8e90e921-fb71-4bba-868f-cdabd431df34",
     "data": [
       {
         "text": "I feel like I\u0027m dying",
@@ -117,7 +247,7 @@
     "updated": 0
   },
   {
-    "id": "dbf4118f-28f0-4dd3-b498-a726515be1f5",
+    "id": "93edb611-5a2c-4573-94e3-7aed36b4a326",
     "data": [
       {
         "text": "I\u0027m ",

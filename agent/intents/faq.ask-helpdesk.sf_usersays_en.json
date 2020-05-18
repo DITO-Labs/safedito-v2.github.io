@@ -1,0 +1,40 @@
+[
+  {
+    "id": "079c77cd-88b9-4fbc-91d9-96a7548be552",
+    "data": [
+      {
+        "text": "Skeletal Force",
+        "alias": "workcondition",
+        "meta": "@workcondition",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "96d8b6a1-032a-47fb-9ddb-31007c35b32d",
+    "data": [
+      {
+        "text": "Critical Work Force",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "f0e3015d-c576-44c6-af16-19acf4bfcd77",
+    "data": [
+      {
+        "text": "Skeletal Work Force",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]
