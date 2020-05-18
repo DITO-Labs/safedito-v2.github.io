@@ -28,7 +28,7 @@
       ],
       "parameters": [
         {
-          "id": "65b0dc6b-88d6-4d91-929b-95d9453222db",
+          "id": "4774f01d-ce74-4863-a00a-8bec6f78e200",
           "required": false,
           "dataType": "@sys.phone-number",
           "name": "phone",
@@ -41,7 +41,7 @@
           "isList": false
         },
         {
-          "id": "b2425466-50ef-4599-a3e0-7ab21abc4f2d",
+          "id": "8a6a56d3-96a3-4adc-99b8-9fef6530125d",
           "required": true,
           "dataType": "@details",
           "name": "details",
@@ -59,7 +59,7 @@
           "isList": true
         },
         {
-          "id": "2bd55f16-b834-41a9-905d-dc3330ffe936",
+          "id": "47e79dbd-96b1-45ca-bdd7-ce52e2ba1df5",
           "required": false,
           "dataType": "@healthstatus",
           "name": "healthstatus",
@@ -83,9 +83,7 @@
                 {
                   "type": "description",
                   "text": [
-                    "We hope you feel better.  Do know that we are here for you! Our Maxicare partners via the Teleconsult Service Hotline  will be able to help you assess your situation please  call +63 2 858 219 80.",
-                    "Keep us posted on your condition and email our People Group AskHR@dito.ph for anything we can be of assistance.",
-                    "$details"
+                    "We hope you feel better. To further help you, we need to know your current work setup."
                   ],
                   "title": "What is your current work situation?"
                 },

@@ -1,29 +1,22 @@
 {
-    "richContent": [
-      [
-        {
-          "type": "chips",
-          "options": [
-            {
-              "text": "Chip 1",
-              "image": {
-                "src": {
-                  "rawUrl": "https://example.com/images/logo.png"
-                }
-              },
-              "link": "https://example.com"
-            },
-            {
-              "text": "Chip 2",
-              "image": {
-                "src": {
-                  "rawUrl": "https://example.com/images/logo.png"
-                }
-              },
-              "link": "https://example.com"
-            }
-          ]
-        }
-      ]
+  "richContent": [
+    [
+      {
+        "type": "info",
+        "title": "Happy to know that all is well with you",
+        "subtitle": "Keep in mind that we are in this together! Catch up again tomorrow."
+      },
+      {
+        "type": "chips",
+        "options": [
+          {
+            "text": "Frequently Asked Questions"
+          },
+          {
+            "text": "Thank you!"
+          }
+        ]
+      }
     ]
+  ]
 }

@@ -1,0 +1,75 @@
+{
+  "id": "76303c74-876d-467b-88c6-61f9019e21ed",
+  "name": "daily-health.check-in.anxious-query",
+  "auto": true,
+  "contexts": [
+    "set-query"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "set-workcondition",
+          "parameters": {},
+          "lifespan": 1
+        },
+        {
+          "name": "set-query",
+          "parameters": {},
+          "lifespan": 0
+        }
+      ],
+      "parameters": [
+        {
+          "id": "7eba9f23-a45e-470f-b1d4-a54931f80e9d",
+          "required": false,
+          "dataType": "@sys.phone-number",
+          "name": "phone",
+          "value": "$phone",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#set-query.phone",
+          "isList": false
+        },
+        {
+          "id": "3b24ed58-778c-4199-a804-c0173bf30c3d",
+          "required": false,
+          "dataType": "@healthstatus",
+          "name": "healthstatus",
+          "value": "$healthstatus",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#set-query.healthstatus",
+          "isList": false
+        }
+      ],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": "What is your work condition?"
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "set-query"
+    }
+  ],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

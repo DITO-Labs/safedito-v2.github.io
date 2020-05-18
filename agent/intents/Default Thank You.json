@@ -1,18 +1,12 @@
 {
-  "id": "d943441e-a4b4-4174-b25d-7afdb8a14adc",
-  "name": "covid-19-taskforce",
+  "id": "52138f4f-8f06-4b81-a1f7-f6d042a394a3",
+  "name": "Default Thank You",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "affectedContexts": [
-        {
-          "name": "dataprivacy",
-          "parameters": {},
-          "lifespan": 1
-        }
-      ],
+      "affectedContexts": [],
       "parameters": [],
       "messages": [
         {
@@ -25,24 +19,29 @@
                 {
                   "type": "description",
                   "text": [
-                    "In this COVID-19 crisis, we care for your safety and well being"
+                    "Feel free to type in your questions or select from the options below."
                   ],
-                  "title": "COVID-19 Task Force"
+                  "title": "You\u0027re welcome! Do you have any other concern?"
                 },
                 {
+                  "type": "chips",
                   "options": [
                     {
-                      "text": "Daily Health Check-In"
+                      "text": "COVID-19 Task Force"
                     },
                     {
-                      "link": "https://endcov.ph/dashboard/",
-                      "text": "COVID-19 Dashboard"
+                      "text": "Emergency Response"
                     },
                     {
-                      "text": "Frequently Asked Questions"
+                      "text": "Employee Assistance Program (EAP)"
+                    },
+                    {
+                      "text": "FAQs"
+                    },
+                    {
+                      "text": "Reports and Analytics"
                     }
-                  ],
-                  "type": "chips"
+                  ]
                 }
               ]
             ]

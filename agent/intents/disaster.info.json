@@ -1,18 +1,12 @@
 {
-  "id": "d943441e-a4b4-4174-b25d-7afdb8a14adc",
-  "name": "covid-19-taskforce",
+  "id": "617be89a-581d-437d-9d38-ba4fe6a8a319",
+  "name": "disaster.info",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "affectedContexts": [
-        {
-          "name": "dataprivacy",
-          "parameters": {},
-          "lifespan": 1
-        }
-      ],
+      "affectedContexts": [],
       "parameters": [],
       "messages": [
         {
@@ -23,23 +17,17 @@
             "richContent": [
               [
                 {
-                  "type": "description",
-                  "text": [
-                    "In this COVID-19 crisis, we care for your safety and well being"
-                  ],
-                  "title": "COVID-19 Task Force"
+                  "title": "Disaster and Emergency Response",
+                  "subtitle": "DITO Family is concerned with your safety during disasters (earthquake, typhoon, fire). Kindly use the report function to let us know if you need our help.",
+                  "type": "info"
                 },
                 {
                   "options": [
                     {
-                      "text": "Daily Health Check-In"
+                      "text": "I\u0027m in an Emergency"
                     },
                     {
-                      "link": "https://endcov.ph/dashboard/",
-                      "text": "COVID-19 Dashboard"
-                    },
-                    {
-                      "text": "Frequently Asked Questions"
+                      "text": "Emergency Numbers"
                     }
                   ],
                   "type": "chips"

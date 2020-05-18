@@ -1,0 +1,68 @@
+{
+  "id": "a8553da5-b296-4aa4-9a59-53b86b39bbd0",
+  "name": "reports.daily-stats",
+  "auto": true,
+  "contexts": [
+    "reports-daily-stats"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "reports-daily-stats",
+          "parameters": {},
+          "lifespan": 0
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "image",
+                  "rawUrl": "https://quickchart.io/chart?bkg\u003dwhite\u0026c\u003d%7B%0A%20%20%22type%22%3A%20%22bar%22%2C%0A%20%20%22data%22%3A%20%7B%0A%20%20%20%20%22labels%22%3A%20%5B%20%22January%22%2C%20%22February%22%2C%20%22March%22%2C%20%22April%22%2C%20%22May%22%2C%20%22June%22%2C%20%22July%22%0A%20%20%20%20%5D%2C%0A%20%20%20%20%22datasets%22%3A%20%5B%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%22label%22%3A%20%22My%20data%22%2C%0A%20%20%20%20%20%20%20%20%22fillColor%22%3A%20%22rgba(220%2C220%2C220%2C0.5)%22%2C%0A%20%20%20%20%20%20%20%20%22strokeColor%22%3A%20%22rgba(220%2C220%2C220%2C1)%22%2C%0A%20%20%20%20%20%20%20%20%22pointColor%22%3A%20%22rgba(220%2C220%2C220%2C1)%22%2C%0A%20%20%20%20%20%20%20%20%22pointStrokeColor%22%3A%20%22%23fff%22%2C%0A%20%20%20%20%20%20%20%20%22data%22%3A%20%5B%2065%2C%2059%2C%2090%2C%2081%2C%2056%2C%2055%2C%2040%20%5D%2C%0A%20%20%20%20%20%20%20%20%22bezierCurve%22%3A%20false%0A%20%20%20%20%20%20%7D%0A%20%20%20%20%5D%0A%20%20%7D%0A%7D%0A",
+                  "accessibilityText": "Dialogflow across platforms"
+                },
+                {
+                  "type": "info",
+                  "title": "Dialogflow",
+                  "actionLink": "https://cloud.google.com/dialogflow/docs",
+                  "subtitle": "Build natural and rich conversational experiences"
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "Case Studies",
+                      "link": "https://cloud.google.com/dialogflow/case-studies"
+                    },
+                    {
+                      "link": "https://cloud.google.com/dialogflow/docs",
+                      "text": "Docs"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

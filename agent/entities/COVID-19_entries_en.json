@@ -1,0 +1,32 @@
+[
+  {
+    "value": "COVID-19",
+    "synonyms": [
+      "COVID-19"
+    ]
+  },
+  {
+    "value": "covid19",
+    "synonyms": [
+      "covid19"
+    ]
+  },
+  {
+    "value": "covid 19 virus",
+    "synonyms": [
+      "covid 19 virus"
+    ]
+  },
+  {
+    "value": "ncov",
+    "synonyms": [
+      "ncov"
+    ]
+  },
+  {
+    "value": "corona virus",
+    "synonyms": [
+      "corona virus"
+    ]
+  }
+]

@@ -18,9 +18,9 @@
             "richContent": [
               [
                 {
-                  "type": "image",
                   "rawUrl": "https://raw.githubusercontent.com/safedito-v2/safedito-v2.github.io/e3b00bed296283edd9c02d0ed312249f745fcb27/images/info-graphics/chatbot-banner.svg",
-                  "accessibilityText": "SafeDITO Chatbot"
+                  "accessibilityText": "SafeDITO Chatbot",
+                  "type": "image"
                 },
                 {
                   "type": "divider"
@@ -33,11 +33,11 @@
                   "title": "Hello there my friend! My name is SafeDITO and I\u0027m here to help!"
                 },
                 {
+                  "title": "Disclaimer:",
                   "type": "description",
                   "text": [
                     "Recommendation from this bot are not medical advice. In the case of emergency, please call 911. For medical advice, please contact Maxicare (02) 85821980 or email safe@dito.ph"
-                  ],
-                  "title": "Disclaimer:"
+                  ]
                 },
                 {
                   "type": "chips",
@@ -46,10 +46,16 @@
                       "text": "COVID-19 Task Force"
                     },
                     {
-                      "text": "Employee Assistance Program"
+                      "text": "Emergency Response"
                     },
                     {
-                      "text": "Frequently Asked Questions"
+                      "text": "Employee Assistance Program (EAP)"
+                    },
+                    {
+                      "text": "FAQs"
+                    },
+                    {
+                      "text": "Reports and Analytics"
                     }
                   ]
                 }
