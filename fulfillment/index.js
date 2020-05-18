@@ -5,12 +5,19 @@ const { WebhookClient } = require("dialogflow-fulfillment");
 const { Payload } = require('dialogflow-fulfillment');
 const { Card, Suggestion } = require("dialogflow-fulfillment");
 const mysql = require("mysql");
-
-// custom variables
-let phone = "";
-let isOverwriteDailyReports = true;
+const nodemailer = require("nodemailer");
 
 process.env.DEBUG = "dialogflow:debug"; // enables lib debugging statements
+
+// Custom Configurations and Variables
+let emailQuery, phone, healthstatus, workcond = "";
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'safedito.noreply@gmail.com',
+    pass: '227E4B5C82249B624C40BA7E424432C4'
+  }
+});
 
 // Connect to a Database
 function connectToDatabase() {
@@ -33,13 +40,12 @@ function connectToDatabase() {
 
 function saveHealthAssessment(connection, data) {
   console.log("method: saveHealthAssessment()");
+  // TO DO: Make this transactional, rollback if a query is failed
   let updateQuery = "update daily_health_logs set isValid = 0 where CAST(timestamp as DATE) = CURDATE() and emp_id = '" + data.emp_id + "'; ";
+  console.log("Executing SQL query: " + updateQuery);
   connection.query(updateQuery);
-  // console.log("1 = " + updateQuery);
-  // console.log("2 = " + data.emp_id);
-  // console.log("3 = '" + data.emp_id + "'");
   let query = "insert into daily_health_logs set ?";
-  console.log(query, data);
+  console.log("Executing SQL query: " + query, data);
   return new Promise((resolve, reject) => {
     connection.query(query, data,
       (error, results, fields) => {
@@ -55,21 +61,46 @@ function addDummyPayload(agent) {
 
 function saveHealthAssessmentHandler(agent) {
   console.log("method: saveHealthAssessmentHandler()");
-  // Work Condition | Symptoms
-  let info = agent.parameters.workcondition + "; " + agent.parameters.details.toString();
+  workcond = (workcond) ? workcond : agent.parameters.workcondition;
+  healthstatus = (healthstatus) ? healthstatus : agent.parameters.healthstatus;
+  phone = (phone) ? phone : agent.parameters.phone;
+  var info = '';
+
+  // Decide which followup event before database query
+  if (healthstatus == 1) {         // 1. Feeling Good
+    info = workcond;
+    if (workcond == "SF") {
+      agent.setFollowupEvent('response-good-sf');
+    } else {
+      agent.setFollowupEvent('response-good-wfh');
+    }
+  } else if (healthstatus == 2) {  // 2. Feeling Unwell
+    info = workcond + " | " + agent.parameters.details.toString();
+    if (workcond == "SF") {
+      agent.setFollowupEvent('response-unwell-sf');
+    } else {
+      agent.setFollowupEvent('response-unwell-wfh');
+    }
+  } else if (healthstatus == 3) {  // 3. Feeling Anxious
+    info = workcond + " | " + emailQuery;
+    agent.setFollowupEvent('response-anxious');
+  }
+  addDummyPayload(agent);
+
+  // collect data
   const data = {
-    emp_id: agent.parameters.phone,
+    emp_id: phone,
     isValid: 1,
-    status: agent.parameters.healthstatus,
+    status: healthstatus,
     details: info,
   };
-  console.log(data);
+  console.log("Data: " + data);
+
+  // finally, log transaction to database:
   return connectToDatabase().then((connection) => {
     try {
       return saveHealthAssessment(connection, data).then((result) => {
-        console.log(result);
         connection.end();
-        agent.add("Query Successful " + result);
       });
     } catch (error) {
       agent.add("Exception encountered " + error);
@@ -102,6 +133,38 @@ function getPhoneHandler(agent) {
   }
 }
 
+function getQueryHandler(agent) {
+  console.log("method: getQueryHandler()");
+  healthstatus = agent.parameters.healthstatus;
+  console.log("healthstatus: " + healthstatus);
+  phone = (phone) ? phone : agent.parameters.phone;
+  console.log("phone: " + phone);
+  emailQuery = agent.query;
+  console.log("emailQuery: " + emailQuery);
+  agent.setFollowupEvent('set-workcondition');
+  addDummyPayload(agent);
+}
+
+function sendEmailHandler(agent) {
+  console.log("method: sendEmailHandler()");
+
+  const mailOptions = {
+    from: "SafeDITO Chatbot", // sender address
+    to: "johnpaulomataac@gmail.com", // list of receivers
+    subject: "EMAIL_SUBJECT", // Subject line
+    html: emailQuery
+  };
+
+  console.log(mailOptions);
+  transporter.sendMail(mailOptions, function (err, info) {
+    if (err) {
+      console.log(err);
+    } else {
+      agent.add("Email sent!");
+    }
+  });
+}
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
   (request, response) => {
     const agent = new WebhookClient({ request, response });
@@ -131,16 +194,12 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
     intentMap.set("dingtalk.login", dingtalkLoginHandler);
-
-    // save health assessment logs
-    intentMap.set("daily-health.checkin.work-condition", saveHealthAssessmentHandler);
-
-    // search for user by phone & search for daily checkin
+    intentMap.set("daily-health.check-in.work-condition", saveHealthAssessmentHandler);
+    intentMap.set("response-anxious", sendEmailHandler);
     intentMap.set("daily-health.checkin", getPhoneHandler);
+    intentMap.set("daily-health.check-in.anxious-query", getQueryHandler);
 
 
-    // intentMap.set("intro", yourFunctionHandler);
-    // intentMap.set('your intent name here', googleAssistantHandler);
     agent.handleRequest(intentMap);
   }
 );
