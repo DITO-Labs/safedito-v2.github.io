@@ -1,0 +1,140 @@
+[
+  {
+    "id": "6752463a-da5e-46c0-b425-d02217347379",
+    "data": [
+      {
+        "text": "I don\u0027t have food to eat",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "f99909ac-076c-4b2a-8856-f9712faec7c1",
+    "data": [
+      {
+        "text": "I miss my husband",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "a2f87def-0884-4a10-9e10-d96973e7ba30",
+    "data": [
+      {
+        "text": "I miss my wife",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "fb3bc101-e2c1-497c-a9bd-8a784b7278c4",
+    "data": [
+      {
+        "text": "I miss my family",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "fcc20d89-a59f-4b24-bb34-6838f8a22d25",
+    "data": [
+      {
+        "text": "My boyfriend broke with me",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6e67b963-751f-40b2-8ad3-b59b5700e715",
+    "data": [
+      {
+        "text": "My girlfriend left me",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "6074c9b2-6d8e-437d-af94-c3570b9f20dd",
+    "data": [
+      {
+        "text": "I\u0027m broken hearted",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "248e598a-2dd9-44f6-a5ed-0cbe06fdd746",
+    "data": [
+      {
+        "text": "My love ",
+        "userDefined": false
+      },
+      {
+        "text": "one",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " passed away",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "768322f4-9251-4812-bab7-15976477135c",
+    "data": [
+      {
+        "text": "I feel like I\u0027m dying",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "dbf4118f-28f0-4dd3-b498-a726515be1f5",
+    "data": [
+      {
+        "text": "I\u0027m ",
+        "userDefined": false
+      },
+      {
+        "text": "anxious",
+        "meta": "@sys.ignore",
+        "userDefined": false
+      },
+      {
+        "text": " because I am broken hearted",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

@@ -1,18 +1,12 @@
 {
-  "id": "d943441e-a4b4-4174-b25d-7afdb8a14adc",
-  "name": "covid-19-taskforce",
+  "id": "223aa2a5-4fe5-4d05-82a3-a3a8b77a1156",
+  "name": "response-good",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "affectedContexts": [
-        {
-          "name": "dataprivacy",
-          "parameters": {},
-          "lifespan": 1
-        }
-      ],
+      "affectedContexts": [],
       "parameters": [],
       "messages": [
         {
@@ -23,26 +17,20 @@
             "richContent": [
               [
                 {
-                  "type": "description",
-                  "text": [
-                    "In this COVID-19 crisis, we care for your safety and well being"
-                  ],
-                  "title": "COVID-19 Task Force"
+                  "subtitle": "Keep in mind that we are in this together! Catch up again tomorrow.",
+                  "type": "info",
+                  "title": "Happy to know that all is well with you"
                 },
                 {
+                  "type": "chips",
                   "options": [
                     {
-                      "text": "Daily Health Check-In"
-                    },
-                    {
-                      "link": "https://endcov.ph/dashboard/",
-                      "text": "COVID-19 Dashboard"
-                    },
-                    {
                       "text": "Frequently Asked Questions"
+                    },
+                    {
+                      "text": "Thank you!"
                     }
-                  ],
-                  "type": "chips"
+                  ]
                 }
               ]
             ]
@@ -57,7 +45,14 @@
   "webhookUsed": false,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
-  "events": [],
+  "events": [
+    {
+      "name": "response-good-wfh"
+    },
+    {
+      "name": "response-good-sf"
+    }
+  ],
   "conditionalResponses": [],
   "condition": "",
   "conditionalFollowupEvents": []

@@ -1,0 +1,63 @@
+{
+  "id": "3356146e-da86-4efd-bf68-dd8b3a62862a",
+  "name": "faq.hotlines",
+  "auto": true,
+  "contexts": [],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "info",
+                  "title": "Philippine Emergency Hotlines",
+                  "actionLink": "http://www.officialgazette.gov.ph/"
+                },
+                {
+                  "type": "image",
+                  "rawUrl": "https://raw.githubusercontent.com/safedito-v2/safedito-v2.github.io/master/images/info-graphics/emergency-hotlines.jpg",
+                  "accessibilityText": "MB Emergency Hotlines"
+                },
+                {
+                  "subtitle": "The Philippine government has publicized other important contact numbers that you may find helpful during emergency http://www.officialgazette.gov.ph/emergency-hotlines/",
+                  "type": "info",
+                  "title": "Maxicare Hotlines",
+                  "actionLink": "http://www.officialgazette.gov.ph/"
+                },
+                {
+                  "type": "chips",
+                  "options": [
+                    {
+                      "text": "More"
+                    },
+                    {
+                      "text": "Thank you!"
+                    }
+                  ]
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

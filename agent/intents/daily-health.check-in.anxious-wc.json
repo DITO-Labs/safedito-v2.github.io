@@ -1,6 +1,6 @@
 {
-  "id": "d943441e-a4b4-4174-b25d-7afdb8a14adc",
-  "name": "covid-19-taskforce",
+  "id": "c8d0734d-d85e-43b9-a121-137fc58e4970",
+  "name": "daily-health.check-in.anxious-wc",
   "auto": true,
   "contexts": [],
   "responses": [
@@ -8,7 +8,7 @@
       "resetContexts": false,
       "affectedContexts": [
         {
-          "name": "dataprivacy",
+          "name": "set-workcondition",
           "parameters": {},
           "lifespan": 1
         }
@@ -25,21 +25,17 @@
                 {
                   "type": "description",
                   "text": [
-                    "In this COVID-19 crisis, we care for your safety and well being"
+                    "We hope you feel better. To further help you, we need to know your current work setup."
                   ],
-                  "title": "COVID-19 Task Force"
+                  "title": "What is your current work situation?"
                 },
                 {
                   "options": [
                     {
-                      "text": "Daily Health Check-In"
+                      "text": "WFH"
                     },
                     {
-                      "link": "https://endcov.ph/dashboard/",
-                      "text": "COVID-19 Dashboard"
-                    },
-                    {
-                      "text": "Frequently Asked Questions"
+                      "text": "Skeletal Force"
                     }
                   ],
                   "type": "chips"
@@ -57,7 +53,11 @@
   "webhookUsed": false,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
-  "events": [],
+  "events": [
+    {
+      "name": "set-anxious-workcondition"
+    }
+  ],
   "conditionalResponses": [],
   "condition": "",
   "conditionalFollowupEvents": []

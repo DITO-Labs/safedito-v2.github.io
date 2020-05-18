@@ -1,0 +1,94 @@
+{
+  "id": "cbf26c99-2436-464f-ae49-32f1ec4f2cac",
+  "name": "daily-health.check-in.work-condition",
+  "auto": true,
+  "contexts": [
+    "set-workcondition"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "set-workcondition",
+          "parameters": {},
+          "lifespan": 0
+        }
+      ],
+      "parameters": [
+        {
+          "id": "4a3b29bc-2e06-4658-b9fe-f4c8cb43fc37",
+          "required": false,
+          "dataType": "@sys.phone-number",
+          "name": "phone",
+          "value": "$phone",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#daily-health-checkin.phone",
+          "isList": false
+        },
+        {
+          "id": "26ba308a-edfb-4aa6-af50-97264058af14",
+          "required": false,
+          "dataType": "@healthstatus",
+          "name": "healthstatus",
+          "value": "$healthstatus",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#set-workcondition.healthstatus",
+          "isList": false
+        },
+        {
+          "id": "07698e0a-901e-4ffd-ab4e-78e8914ea3b3",
+          "required": false,
+          "dataType": "@workcondition",
+          "name": "workcondition",
+          "value": "$workcondition",
+          "prompts": [
+            {
+              "lang": "en",
+              "value": "Kindly choose between WFH or Skeletal Force."
+            }
+          ],
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "93ca51a1-ad16-4e17-b3a1-7103f453ede7",
+          "required": false,
+          "dataType": "@details",
+          "name": "details",
+          "value": "$details",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#set-workcondition.details",
+          "isList": true
+        }
+      ],
+      "messages": [],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": true,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [
+    {
+      "name": "set-workcondition"
+    }
+  ],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

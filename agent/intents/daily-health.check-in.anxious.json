@@ -13,22 +13,22 @@
         {
           "name": "daily-health-checkin",
           "parameters": {},
-          "lifespan": 2
+          "lifespan": 0
         },
         {
           "name": "daily-health-anxious",
           "parameters": {},
-          "lifespan": 1
+          "lifespan": 0
         },
         {
-          "name": "daily-healthcheck-inanxious-followup",
+          "name": "set-query",
           "parameters": {},
-          "lifespan": 2
+          "lifespan": 1
         }
       ],
       "parameters": [
         {
-          "id": "47443e81-8853-4661-9a75-975f4a5e1489",
+          "id": "02f2e1ca-a8af-4d8c-832d-ae602f8dfbd2",
           "required": false,
           "dataType": "@healthstatus",
           "name": "healthstatus",
@@ -37,6 +37,19 @@
           "noMatchPromptMessages": [],
           "noInputPromptMessages": [],
           "outputDialogContexts": [],
+          "isList": false
+        },
+        {
+          "id": "0fbb90d3-945b-4b8d-9fc4-8fbad851698c",
+          "required": false,
+          "dataType": "@sys.phone-number",
+          "name": "phone",
+          "value": "$phone",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#daily-health-checkin.phone",
           "isList": false
         }
       ],
@@ -49,11 +62,11 @@
             "richContent": [
               [
                 {
-                  "title": "Can you please tell us more on why are you anxious today?",
                   "type": "description",
                   "text": [
                     "Your mental wellbeing is very important to us. Kindly tell us the details so our experts can help you better."
-                  ]
+                  ],
+                  "title": "Can you please tell us more on why are you anxious today?"
                 }
               ]
             ]

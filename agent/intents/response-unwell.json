@@ -1,18 +1,12 @@
 {
-  "id": "d943441e-a4b4-4174-b25d-7afdb8a14adc",
-  "name": "covid-19-taskforce",
+  "id": "69c1889c-5570-442a-a3cb-fbd5b1040020",
+  "name": "response-unwell",
   "auto": true,
   "contexts": [],
   "responses": [
     {
       "resetContexts": false,
-      "affectedContexts": [
-        {
-          "name": "dataprivacy",
-          "parameters": {},
-          "lifespan": 1
-        }
-      ],
+      "affectedContexts": [],
       "parameters": [],
       "messages": [
         {
@@ -23,23 +17,17 @@
             "richContent": [
               [
                 {
-                  "type": "description",
-                  "text": [
-                    "In this COVID-19 crisis, we care for your safety and well being"
-                  ],
-                  "title": "COVID-19 Task Force"
+                  "type": "info",
+                  "title": "We hope you feel better. Do know that we are here for you!",
+                  "subtitle": "Our Maxicare partners via the Teleconsult Service Hotline  will be able to help you assess your situation please call +63285821980. \n Keep us posted on your condition and email our People Group AskHR@dito.ph for anything we can be of assistance."
                 },
                 {
                   "options": [
                     {
-                      "text": "Daily Health Check-In"
-                    },
-                    {
-                      "link": "https://endcov.ph/dashboard/",
-                      "text": "COVID-19 Dashboard"
-                    },
-                    {
                       "text": "Frequently Asked Questions"
+                    },
+                    {
+                      "text": "Thank you!"
                     }
                   ],
                   "type": "chips"
@@ -57,7 +45,14 @@
   "webhookUsed": false,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
-  "events": [],
+  "events": [
+    {
+      "name": "response-unwell-wfh"
+    },
+    {
+      "name": "response-unwell-sf"
+    }
+  ],
   "conditionalResponses": [],
   "condition": "",
   "conditionalFollowupEvents": []

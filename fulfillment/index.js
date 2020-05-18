@@ -141,7 +141,7 @@ function getQueryHandler(agent) {
   console.log("phone: " + phone);
   emailQuery = agent.query;
   console.log("emailQuery: " + emailQuery);
-  agent.setFollowupEvent('set-workcondition');
+  agent.setFollowupEvent('set-anxious-workcondition');
   addDummyPayload(agent);
 }
 
@@ -151,8 +151,8 @@ function sendEmailHandler(agent) {
   const mailOptions = {
     from: "SafeDITO Chatbot", // sender address
     to: "johnpaulomataac@gmail.com", // list of receivers
-    subject: "EMAIL_SUBJECT", // Subject line
-    html: emailQuery
+    subject: "SafeDITO: Feeling Anxious - " + phone, // Subject line
+    html: "Query: " + emailQuery
   };
 
   console.log(mailOptions);

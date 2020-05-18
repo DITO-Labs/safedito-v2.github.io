@@ -20,11 +20,11 @@
             "richContent": [
               [
                 {
-                  "title": "If you want to get health screening again, just let me know.",
                   "type": "description",
                   "text": [
                     "Thank you for your time and let’s stay connected. #DITOTayo #DITOWeCare"
-                  ]
+                  ],
+                  "title": "If you want to get health screening again, just let me know."
                 }
               ],
               [
@@ -34,13 +34,16 @@
                       "text": "COVID-19 Task Force"
                     },
                     {
-                      "text": "Employee Assistance Program"
+                      "text": "Emergency Response"
                     },
                     {
-                      "text": "Employee Well Being"
+                      "text": "Employee Assistance Program (EAP)"
                     },
                     {
-                      "text": "Frequently Asked Questions"
+                      "text": "FAQs"
+                    },
+                    {
+                      "text": "Reports and Analytics"
                     }
                   ],
                   "type": "chips"

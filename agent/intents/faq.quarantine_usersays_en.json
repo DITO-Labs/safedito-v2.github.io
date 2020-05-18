@@ -1,9 +1,9 @@
 [
   {
-    "id": "92b6f1db-7c47-462c-a486-b352f7d1886c",
+    "id": "3f1b8577-9a7c-4d62-b454-7471b47efad6",
     "data": [
       {
-        "text": "sources",
+        "text": "ECQ and GCQ Guidelines",
         "userDefined": false
       }
     ],
@@ -12,10 +12,10 @@
     "updated": 0
   },
   {
-    "id": "4d7e8bd3-f001-47e0-9979-befbcbf37482",
+    "id": "91fd6ac0-3d4b-483b-8fbe-6a1c9a8d16e5",
     "data": [
       {
-        "text": "Where are your sources?",
+        "text": "General Community Quarantine (GCQ)",
         "userDefined": false
       }
     ],
@@ -24,10 +24,10 @@
     "updated": 0
   },
   {
-    "id": "350b04ae-4f42-479f-81a2-d9d7332282eb",
+    "id": "0c4a323f-2502-42ee-918b-840cc63a215e",
     "data": [
       {
-        "text": "fact check",
+        "text": "Enhanced Community Quarantine (ECQ)",
         "userDefined": false
       }
     ],
@@ -36,10 +36,10 @@
     "updated": 0
   },
   {
-    "id": "d9f65482-f293-4169-ba87-33fc663d101a",
+    "id": "1a8345be-75f5-45ad-a1e5-ff84f1e9115a",
     "data": [
       {
-        "text": "Are these facts?",
+        "text": "Enhanced Community Quarantine vs General Community Quarantine",
         "userDefined": false
       }
     ],
@@ -48,10 +48,10 @@
     "updated": 0
   },
   {
-    "id": "37d196d2-faef-4a54-9913-6a86282af759",
+    "id": "ac093a25-d010-469c-9d85-4ce9a9b594a4",
     "data": [
       {
-        "text": "Where did you get these informations?",
+        "text": "What is the difference of ECQ and GCQ",
         "userDefined": false
       }
     ],
@@ -60,10 +60,10 @@
     "updated": 0
   },
   {
-    "id": "677edd38-e273-41e7-bbbb-0272811012e7",
+    "id": "32505398-09ec-4021-9581-aa09ca4d7081",
     "data": [
       {
-        "text": "What are your sources?",
+        "text": "What is modified ECQ",
         "userDefined": false
       }
     ],
@@ -72,10 +72,22 @@
     "updated": 0
   },
   {
-    "id": "03fd6b6f-fd60-4877-a417-7b260f665711",
+    "id": "edfe9612-0e7c-41f3-b933-505aff1682dd",
     "data": [
       {
-        "text": "Source(s)",
+        "text": "What is GCQ",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "1bccf8be-0dca-4f12-ae1b-38a2582e521a",
+    "data": [
+      {
+        "text": "What is ECQ",
         "userDefined": false
       }
     ],

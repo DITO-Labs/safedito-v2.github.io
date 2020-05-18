@@ -1,6 +1,6 @@
 {
-  "id": "d943441e-a4b4-4174-b25d-7afdb8a14adc",
-  "name": "covid-19-taskforce",
+  "id": "8bda7b86-8bec-4877-a0b5-f3ab57e10125",
+  "name": "reports",
   "auto": true,
   "contexts": [],
   "responses": [
@@ -8,7 +8,7 @@
       "resetContexts": false,
       "affectedContexts": [
         {
-          "name": "dataprivacy",
+          "name": "reports-daily-stats",
           "parameters": {},
           "lifespan": 1
         }
@@ -23,23 +23,23 @@
             "richContent": [
               [
                 {
-                  "type": "description",
-                  "text": [
-                    "In this COVID-19 crisis, we care for your safety and well being"
-                  ],
-                  "title": "COVID-19 Task Force"
+                  "type": "image",
+                  "rawUrl": "https://example.com/images/logo.png",
+                  "accessibilityText": "Dialogflow across platforms"
+                },
+                {
+                  "subtitle": "Build natural and rich conversational experiences",
+                  "type": "info",
+                  "title": "Dialogflow",
+                  "actionLink": "https://cloud.google.com/dialogflow/docs"
                 },
                 {
                   "options": [
                     {
-                      "text": "Daily Health Check-In"
+                      "text": "Daily Analytics"
                     },
                     {
-                      "link": "https://endcov.ph/dashboard/",
-                      "text": "COVID-19 Dashboard"
-                    },
-                    {
-                      "text": "Frequently Asked Questions"
+                      "text": "Weekly Analytics"
                     }
                   ],
                   "type": "chips"

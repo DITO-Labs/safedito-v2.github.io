@@ -46,7 +46,7 @@
   "onePlatformApiVersion": "v2beta1",
   "analyzeQueryTextSentiment": false,
   "enabledKnowledgeBaseNames": [
-    "projects/promise-mysql-chatbot-cdcilw/knowledgeBases/NTQwODI2Njc5OTU4ODMxMTA0MA"
+    "projects/safedito-chatbot-nqfoxb/knowledgeBases/MTYzNzQzOTExNTQ3NDcxMTM0NzI"
   ],
   "knowledgeServiceConfidenceAdjustment": -0.4,
   "dialogBuilderMode": false,

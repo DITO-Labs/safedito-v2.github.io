@@ -1,0 +1,30 @@
+[
+  {
+    "id": "d9a2ce14-9e31-4535-99ca-73fe5ba4a0f8",
+    "data": [
+      {
+        "text": "Skeletal Force",
+        "alias": "workcondition",
+        "meta": "@workcondition",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "48c54df2-ccf4-47a6-a313-31e92f23a064",
+    "data": [
+      {
+        "text": "WFH",
+        "alias": "workcondition",
+        "meta": "@workcondition",
+        "userDefined": true
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  }
+]

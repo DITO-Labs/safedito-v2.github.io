@@ -1,6 +1,20 @@
 [
   {
-    "id": "712e86cc-4690-48a4-8cda-373b68960ef8",
+    "id": "72fc5e16-5d0d-4c31-9fd8-877e1ffb2de0",
+    "data": [
+      {
+        "text": "3",
+        "alias": "healthstatus",
+        "meta": "@healthstatus",
+        "userDefined": false
+      }
+    ],
+    "isTemplate": false,
+    "count": 0,
+    "updated": 0
+  },
+  {
+    "id": "b260a042-4b11-455c-8583-81317abc8851",
     "data": [
       {
         "text": "Anxious",
@@ -14,7 +28,7 @@
     "updated": 0
   },
   {
-    "id": "c38e1961-b99a-4869-b5de-0859575bdaa5",
+    "id": "5ee693ba-b65a-409e-b21e-4a983a929dd9",
     "data": [
       {
         "text": "3. Feeling Anxious",
