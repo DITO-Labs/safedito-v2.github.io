@@ -1,12 +1,20 @@
 {
-  "id": "52138f4f-8f06-4b81-a1f7-f6d042a394a3",
-  "name": "thanks",
+  "id": "8a176330-9019-4f4f-bed7-73b034566646",
+  "name": "faq.ask-helpdesk.wfh",
   "auto": true,
-  "contexts": [],
+  "contexts": [
+    "ask-helpdesk"
+  ],
   "responses": [
     {
       "resetContexts": false,
-      "affectedContexts": [],
+      "affectedContexts": [
+        {
+          "name": "ask-helpdesk",
+          "parameters": {},
+          "lifespan": 1
+        }
+      ],
       "parameters": [],
       "messages": [
         {
@@ -17,25 +25,20 @@
             "richContent": [
               [
                 {
-                  "type": "description",
-                  "text": [
-                    "Feel free to type in your questions or select from the options below."
-                  ],
-                  "title": "You\u0027re welcome! Do you have any other concern?"
+                  "subtitle": "You can expect to hear from them within 3 hours.",
+                  "type": "info",
+                  "title": "Please email it.admin@dito.ph and wait for a workchat message from one of our IT Colleagues re your request."
                 },
                 {
+                  "type": "chips",
                   "options": [
                     {
-                      "text": "COVID-19 Task Force"
+                      "text": "Great! Thanks"
                     },
                     {
-                      "text": "Employee Assistance Program"
-                    },
-                    {
-                      "text": "Employee Wellbeing"
+                      "text": "Ask Something Else"
                     }
-                  ],
-                  "type": "chips"
+                  ]
                 }
               ]
             ]

@@ -1,0 +1,64 @@
+{
+  "id": "ea95d95c-6a12-4154-8de7-5ed2b57bd079",
+  "name": "faq.hotlines.more",
+  "auto": true,
+  "contexts": [
+    "hotlines-more"
+  ],
+  "responses": [
+    {
+      "resetContexts": false,
+      "affectedContexts": [
+        {
+          "name": "hotlines-more",
+          "parameters": {},
+          "lifespan": 0
+        }
+      ],
+      "parameters": [],
+      "messages": [
+        {
+          "type": 4,
+          "lang": "en",
+          "condition": "",
+          "payload": {
+            "richContent": [
+              [
+                {
+                  "type": "description",
+                  "text": [
+                    "Because we want what\u0027s best for you, specially in times of crisis."
+                  ],
+                  "title": "You can also contact the following hotlines:"
+                },
+                {
+                  "type": "divider"
+                },
+                {
+                  "subtitle": "Maxicare 24/7 Customer Hotlines: \n (02)8582-1900 or (02)7798-7777 \n\n Maxicare Teleconsult (Metro Manila):\n (02)8582-1980 \n ",
+                  "type": "list",
+                  "title": "Maxicare"
+                },
+                {
+                  "type": "list",
+                  "title": "DITO COVID-19 TaskForce",
+                  "subtitle": "09662013003 or email at safe@dito.ph"
+                }
+              ]
+            ]
+          }
+        }
+      ],
+      "defaultResponsePlatforms": {},
+      "speech": []
+    }
+  ],
+  "priority": 500000,
+  "webhookUsed": false,
+  "webhookForSlotFilling": false,
+  "fallbackIntent": false,
+  "events": [],
+  "conditionalResponses": [],
+  "condition": "",
+  "conditionalFollowupEvents": []
+}

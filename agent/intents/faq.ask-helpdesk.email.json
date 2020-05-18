@@ -1,16 +1,16 @@
 {
-  "id": "bb1f335c-a861-4d72-9566-929a909ad66b",
-  "name": "response-anxious",
+  "id": "3016cbc3-8133-4ac0-8f02-e92b084a8d1f",
+  "name": "faq.ask-helpdesk.email",
   "auto": true,
   "contexts": [
-    "send-email-successful"
+    "ask-helpdesk"
   ],
   "responses": [
     {
       "resetContexts": false,
       "affectedContexts": [
         {
-          "name": "send-email-successful",
+          "name": "ask-helpdesk",
           "parameters": {},
           "lifespan": 0
         }
@@ -25,18 +25,18 @@
             "richContent": [
               [
                 {
+                  "subtitle": "Kindly wait for a reply from one of our TF Colleagues re your request. You can expect to hear from them within 3 hours. You can also call them at +63 966 201 3003",
                   "type": "info",
-                  "title": "Email Sent! Please expect a response from us",
-                  "subtitle": "We hope you feel better soon. Do know that we are here for you! We know that you are still adjusting to the new work arrangements. Many stressors come with this pandemic too. I’m sure that can be challenging for your mental balance. \n\n Our partners at Maxicare can help you with this. Just call the Teleconsult Service Hotline at +63285821980 so they can assess and assist you. \n\n This too shall pass. You are strong. We will get through this!"
+                  "title": "Please email our Safety  Task Force at safe@dito.ph"
                 },
                 {
                   "type": "chips",
                   "options": [
                     {
-                      "text": "Frequently Asked Questions"
+                      "text": "Great! Thanks"
                     },
                     {
-                      "text": "Thank you!"
+                      "text": "Ask Something Else"
                     }
                   ]
                 }
@@ -53,11 +53,7 @@
   "webhookUsed": false,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
-  "events": [
-    {
-      "name": "send-email-confirmation"
-    }
-  ],
+  "events": [],
   "conditionalResponses": [],
   "condition": "",
   "conditionalFollowupEvents": []

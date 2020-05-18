@@ -1,21 +1,18 @@
 {
-  "id": "6857e4ca-a893-4c02-9ab5-be9cd0252141",
-  "name": "faq",
+  "id": "c01be77e-d6b6-4486-8b83-524a0a0a10ac",
+  "name": "faq.ask-helpdesk",
   "auto": true,
-  "contexts": [],
+  "contexts": [
+    "ask-helpdesk"
+  ],
   "responses": [
     {
       "resetContexts": false,
       "affectedContexts": [
         {
-          "name": "ask-hr",
-          "parameters": {},
-          "lifespan": 1
-        },
-        {
           "name": "ask-helpdesk",
           "parameters": {},
-          "lifespan": 3
+          "lifespan": 1
         }
       ],
       "parameters": [],
@@ -28,28 +25,17 @@
             "richContent": [
               [
                 {
-                  "type": "description",
-                  "text": [
-                    "You can choose from the options below, or you can type in your questions."
-                  ],
-                  "title": "Frequently Asked Questions (FAQ)"
+                  "subtitle": "Please select from the following options:",
+                  "type": "info",
+                  "title": "Which category are you included?"
                 },
                 {
                   "options": [
                     {
-                      "text": "HR Concerns"
+                      "text": "Work From Home"
                     },
                     {
-                      "text": "Ask our Helpdesks"
-                    },
-                    {
-                      "text": "Sources"
-                    },
-                    {
-                      "text": "Emergency Hotlines"
-                    },
-                    {
-                      "text": "What are the symptoms of COVID-19?"
+                      "text": "Skeletal Force"
                     }
                   ],
                   "type": "chips"

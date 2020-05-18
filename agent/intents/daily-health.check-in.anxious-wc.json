@@ -2,7 +2,9 @@
   "id": "c8d0734d-d85e-43b9-a121-137fc58e4970",
   "name": "daily-health.check-in.anxious-wc",
   "auto": true,
-  "contexts": [],
+  "contexts": [
+    "set-workcondition"
+  ],
   "responses": [
     {
       "resetContexts": false,
@@ -13,7 +15,34 @@
           "lifespan": 1
         }
       ],
-      "parameters": [],
+      "parameters": [
+        {
+          "id": "96bf6945-e170-4e20-9676-7a7441c1d848",
+          "required": false,
+          "dataType": "@sys.phone-number",
+          "name": "phone",
+          "value": "$phone",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#set-workcondition.phone",
+          "isList": false
+        },
+        {
+          "id": "8d143ede-36e0-410d-9430-a5a332887a4e",
+          "required": false,
+          "dataType": "@healthstatus",
+          "name": "healthstatus",
+          "value": "$healthstatus",
+          "promptMessages": [],
+          "noMatchPromptMessages": [],
+          "noInputPromptMessages": [],
+          "outputDialogContexts": [],
+          "defaultValue": "#set-workcondition.healthstatus",
+          "isList": false
+        }
+      ],
       "messages": [
         {
           "type": 4,
@@ -23,13 +52,14 @@
             "richContent": [
               [
                 {
+                  "title": "What is your current work situation?",
                   "type": "description",
                   "text": [
                     "We hope you feel better. To further help you, we need to know your current work setup."
-                  ],
-                  "title": "What is your current work situation?"
+                  ]
                 },
                 {
+                  "type": "chips",
                   "options": [
                     {
                       "text": "WFH"
@@ -37,8 +67,7 @@
                     {
                       "text": "Skeletal Force"
                     }
-                  ],
-                  "type": "chips"
+                  ]
                 }
               ]
             ]
