@@ -1,6 +1,6 @@
 {
-  "id": "617be89a-581d-437d-9d38-ba4fe6a8a319",
-  "name": "disaster.info",
+  "id": "6950f461-d3fa-4666-beac-b02d978c527b",
+  "name": "disaster.emergency-log",
   "auto": true,
   "contexts": [],
   "responses": [
@@ -17,14 +17,14 @@
             "richContent": [
               [
                 {
-                  "subtitle": "DITO Family is concerned with your safety during disasters (earthquake, typhoon, fire). Kindly use the report function to let us know if you need our help.",
-                  "type": "info",
-                  "title": "Disaster and Emergency Response"
+                  "title": "Ooops! This feature is not yet available.",
+                  "subtitle": "I\u0027m still learning new words everyday so please understand that I might have some issues. But please let me know if you found a bug by emailing my developer paulo.mataac@dito.ph",
+                  "type": "info"
                 },
                 {
                   "options": [
                     {
-                      "text": "Emergency Hotlines"
+                      "text": "Okay, thank you!"
                     }
                   ],
                   "type": "chips"

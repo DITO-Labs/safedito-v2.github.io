@@ -1,6 +1,6 @@
 {
   "id": "3016cbc3-8133-4ac0-8f02-e92b084a8d1f",
-  "name": "faq.ask-helpdesk.email",
+  "name": "faq.ask-helpdesk.default",
   "auto": true,
   "contexts": [
     "ask-helpdesk"

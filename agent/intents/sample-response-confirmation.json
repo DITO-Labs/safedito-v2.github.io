@@ -2,18 +2,26 @@
   "id": "514e9c7b-f644-4292-aa8f-02de58d4b477",
   "name": "sample-response-confirmation",
   "auto": true,
-  "contexts": [],
+  "contexts": [
+    "sample-context"
+  ],
   "responses": [
     {
       "resetContexts": false,
-      "affectedContexts": [],
+      "affectedContexts": [
+        {
+          "name": "sample-context",
+          "parameters": {},
+          "lifespan": 5
+        }
+      ],
       "parameters": [],
       "messages": [
         {
           "type": 0,
           "lang": "en",
           "condition": "",
-          "speech": "Email sent!"
+          "speech": "Working Response"
         }
       ],
       "defaultResponsePlatforms": {},
@@ -26,7 +34,7 @@
   "fallbackIntent": false,
   "events": [
     {
-      "name": "send-email-confirmation"
+      "name": "sample-event"
     }
   ],
   "conditionalResponses": [],

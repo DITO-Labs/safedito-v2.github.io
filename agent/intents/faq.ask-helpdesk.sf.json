@@ -17,7 +17,7 @@
       ],
       "parameters": [
         {
-          "id": "ea001410-a111-4af1-a0eb-0ad21c973b9a",
+          "id": "725f7591-7551-4a41-8ef7-7bf24172d00b",
           "required": false,
           "dataType": "@workcondition",
           "name": "workcondition",
@@ -51,7 +51,7 @@
                       "text": "PPE Supplies"
                     },
                     {
-                      "text": "Accomodation"
+                      "text": "Accommodation"
                     }
                   ],
                   "type": "chips"

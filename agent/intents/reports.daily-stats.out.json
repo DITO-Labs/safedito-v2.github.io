@@ -1,50 +1,45 @@
 {
-  "id": "76303c74-876d-467b-88c6-61f9019e21ed",
-  "name": "daily-health.check-in.anxious-query",
+  "id": "2a885c7d-2b14-45ac-8c3b-7478081079e5",
+  "name": "reports.daily-stats.out",
   "auto": true,
   "contexts": [
-    "set-query"
+    "generate-chart"
   ],
   "responses": [
     {
       "resetContexts": false,
       "affectedContexts": [
         {
-          "name": "set-workcondition",
+          "name": "generate-chart",
           "parameters": {},
           "lifespan": 1
-        },
-        {
-          "name": "set-query",
-          "parameters": {},
-          "lifespan": 0
         }
       ],
       "parameters": [
         {
-          "id": "f8398c07-eeed-4564-a0ca-51fc5a580be7",
+          "id": "e2c00294-4717-4e5e-8bff-4c7d5a15d5ef",
           "required": false,
-          "dataType": "@sys.phone-number",
-          "name": "phone",
-          "value": "$phone",
+          "dataType": "@sys.url",
+          "name": "urlChart",
+          "value": "$urlChart",
           "promptMessages": [],
           "noMatchPromptMessages": [],
           "noInputPromptMessages": [],
           "outputDialogContexts": [],
-          "defaultValue": "#set-query.phone",
+          "defaultValue": "#generate-chart.urlChart",
           "isList": false
         },
         {
-          "id": "a934d3e6-0401-488f-ad35-71c3c3877c7e",
+          "id": "b303f997-d87c-4b2a-9943-4ebf0ef051ff",
           "required": false,
-          "dataType": "@healthstatus",
-          "name": "healthstatus",
-          "value": "$healthstatus",
+          "dataType": "@sys.date-time",
+          "name": "today",
+          "value": "$today",
           "promptMessages": [],
           "noMatchPromptMessages": [],
           "noInputPromptMessages": [],
           "outputDialogContexts": [],
-          "defaultValue": "#set-query.healthstatus",
+          "defaultValue": "#generate-chart.today",
           "isList": false
         }
       ],
@@ -57,22 +52,25 @@
             "richContent": [
               [
                 {
-                  "type": "description",
-                  "text": [
-                    "We hope you feel better. To further help you, we need to know your current work setup."
-                  ],
-                  "title": "What is your current work situation?"
+                  "subtitle": "This reports are generated on $today. It may take several minutes before changes is reflected to the graph.",
+                  "type": "info",
+                  "title": "Daily Statistics Report"
                 },
                 {
+                  "type": "image",
+                  "rawUrl": "$urlChart",
+                  "accessibilityText": "Daily Statistics Report"
+                },
+                {
+                  "type": "chips",
                   "options": [
                     {
-                      "text": "WFH"
+                      "text": "Frequently Asked Questions"
                     },
                     {
-                      "text": "Skeletal Force"
+                      "text": "Thank you!"
                     }
-                  ],
-                  "type": "chips"
+                  ]
                 }
               ]
             ]
@@ -84,12 +82,12 @@
     }
   ],
   "priority": 500000,
-  "webhookUsed": true,
+  "webhookUsed": false,
   "webhookForSlotFilling": false,
   "fallbackIntent": false,
   "events": [
     {
-      "name": "set-query"
+      "name": "daily-stats-out"
     }
   ],
   "conditionalResponses": [],

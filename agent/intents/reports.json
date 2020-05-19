@@ -11,6 +11,11 @@
           "name": "reports-daily-stats",
           "parameters": {},
           "lifespan": 1
+        },
+        {
+          "name": "reports-weekly-stats",
+          "parameters": {},
+          "lifespan": 1
         }
       ],
       "parameters": [],
@@ -23,17 +28,12 @@
             "richContent": [
               [
                 {
-                  "type": "image",
-                  "rawUrl": "https://example.com/images/logo.png",
-                  "accessibilityText": "Dialogflow across platforms"
-                },
-                {
-                  "subtitle": "Build natural and rich conversational experiences",
+                  "subtitle": "Keep in mind that we are in this together! Catch up again tomorrow.",
                   "type": "info",
-                  "title": "Dialogflow",
-                  "actionLink": "https://cloud.google.com/dialogflow/docs"
+                  "title": "Reports and Analytics"
                 },
                 {
+                  "type": "chips",
                   "options": [
                     {
                       "text": "Daily Analytics"
@@ -41,8 +41,7 @@
                     {
                       "text": "Weekly Analytics"
                     }
-                  ],
-                  "type": "chips"
+                  ]
                 }
               ]
             ]

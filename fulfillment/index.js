@@ -3,14 +3,16 @@
 const functions = require("firebase-functions");
 const { WebhookClient } = require("dialogflow-fulfillment");
 const { Payload } = require('dialogflow-fulfillment');
-const { Card, Suggestion } = require("dialogflow-fulfillment");
+const { Image } = require('dialogflow-fulfillment');
 const mysql = require("mysql");
 const nodemailer = require("nodemailer");
 
 process.env.DEBUG = "dialogflow:debug"; // enables lib debugging statements
 
 // Custom Configurations and Variables
-let emailQuery, phone, healthstatus, workcond = "";
+let emailQuery, phone, healthstatus, workcond, rawData = "";
+let goodTotal = 0, unwellTotal = 0, anxiousTotal = 0;
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -52,6 +54,36 @@ function saveHealthAssessment(connection, data) {
         resolve(results);
       }
     );
+  });
+}
+
+function getDailyStatistics(connection) {
+  console.log("method: getDailyStatistics()");
+
+  // Get data from sql
+  const query = `SELECT status, count(emp_id) as total FROM daily_health_logs WHERE isValid = 1 AND CAST(timestamp as DATE) = CURDATE() GROUP BY status;`;
+
+  console.log("Executing SQL query: " + query);
+  return new Promise((resolve, reject) => {
+    connection.query(query, (error, results, fields) => {
+      console.log(results);
+      resolve(results);
+    });
+  });
+}
+
+function getWeeklyStatistics(connection) {
+  console.log("method: getWeeklyStatistics()");
+
+  // Get data from sql
+  const query = `SELECT status, count(emp_id) as total FROM daily_health_logs WHERE isValid = 1 AND CAST(timestamp as DATE) = CURDATE() GROUP BY status;`;
+
+  console.log("Executing SQL query: " + query);
+  return new Promise((resolve, reject) => {
+    connection.query(query, (error, results, fields) => {
+      console.log(results);
+      resolve(results);
+    });
   });
 }
 
@@ -171,6 +203,98 @@ function sendEmailHandler(agent) {
   addDummyPayload(agent);
 }
 
+function dailyChartHandler(agent) {
+  console.log("method: dailyChartHandler()");
+
+  console.log("Before Total(s): ", goodTotal, unwellTotal, anxiousTotal);
+
+  // first, get table from database:
+  connectToDatabase().then((connection) => {
+    try {
+      getDailyStatistics(connection).then((result) => {
+        connection.end();
+        rawData = JSON.stringify(result);
+        result.forEach(function (row) {
+          if (row.status == 1) goodTotal = (row.total) ? row.total : 0;
+          else if (row.status == 2) unwellTotal = (row.total) ? row.total : 0;
+          else if (row.status == 3) anxiousTotal = (row.total) ? row.total : 0;
+        });
+        console.log("Results: " + rawData);
+      });
+    } catch (error) {
+      agent.add("Exception encountered " + error);
+    }
+  });
+
+  console.log("Query completed: " + rawData);
+  console.log("After Total(s): ", goodTotal, unwellTotal, anxiousTotal);
+
+  var dataChart = {
+    type: 'pie', data: {
+      datasets: [{ data: [goodTotal, unwellTotal, anxiousTotal] }],
+      labels: ['Good', 'Unwell', 'Anxious ']
+    }
+  };
+  var quickChart = "https://quickchart.io/chart?bkg=white&c=" +
+    encodeURIComponent(JSON.stringify(dataChart));
+
+  console.log("QuickChart.io: " + quickChart);
+  let ctx = {
+    'name': 'generate-chart', 'lifespan': 1,
+    'parameters': { 'urlChart': quickChart , 'today': new Date().toLocaleString()}
+  };
+
+  agent.setContext(ctx);
+  agent.setFollowupEvent('daily-stats-out');
+
+}
+
+function weeklyChartHandler(agent) {
+  console.log("method: weeklyChartHandler()");
+  
+  console.log("Before Total(s): ", goodTotal, unwellTotal, anxiousTotal);
+
+  // // first, get table from database:
+  // connectToDatabase().then((connection) => {
+  //   try {
+  //     getWeeklyStatistics(connection).then((result) => {
+  //       connection.end();
+  //       rawData = JSON.stringify(result);
+  //       result.forEach(function (row) {
+  //         if (row.status == 1) goodTotal = (row.total) ? row.total : 0;
+  //         else if (row.status == 2) unwellTotal = (row.total) ? row.total : 0;
+  //         else if (row.status == 3) anxiousTotal = (row.total) ? row.total : 0;
+  //       });
+  //       console.log("Results: " + rawData);
+  //     });
+  //   } catch (error) {
+  //     agent.add("Exception encountered " + error);
+  //   }
+  // });
+
+  // console.log("Query completed: " + rawData);
+  // console.log("After Total(s): ", goodTotal, unwellTotal, anxiousTotal);
+
+  var dataChart = {
+    type: 'bar', data: {
+      datasets: [{ data: [18, 27, 30, 15, 12] }],
+      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+    }
+  };
+  var quickChart = "https://quickchart.io/chart?bkg=white&c=" +
+    encodeURIComponent(JSON.stringify(dataChart));
+
+  console.log("QuickChart.io: " + quickChart);
+  let ctx = {
+    'name': 'generate-chart', 'lifespan': 1,
+    'parameters': { 'urlChart': quickChart , 'today': new Date().toLocaleString()}
+  };
+
+  agent.setContext(ctx);
+  agent.setFollowupEvent('weekly-stats-out');
+
+}
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
   (request, response) => {
     const agent = new WebhookClient({ request, response });
@@ -204,6 +328,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     intentMap.set("send-email", sendEmailHandler);
     intentMap.set("daily-health.checkin", getPhoneHandler);
     intentMap.set("daily-health.check-in.anxious-query", getQueryHandler);
+    intentMap.set("reports.daily-stats", dailyChartHandler);
+    intentMap.set("reports.weekly-stats", weeklyChartHandler);
     agent.handleRequest(intentMap);
   }
 );

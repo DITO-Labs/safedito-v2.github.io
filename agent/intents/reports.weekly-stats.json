@@ -1,22 +1,29 @@
 {
-  "id": "a8553da5-b296-4aa4-9a59-53b86b39bbd0",
-  "name": "reports.daily-stats",
+  "id": "b2a88e18-bd8e-430a-9563-70a8ba5ef19b",
+  "name": "reports.weekly-stats",
   "auto": true,
   "contexts": [
-    "reports-daily-stats"
+    "reports-weekly-stats"
   ],
   "responses": [
     {
       "resetContexts": false,
       "affectedContexts": [
         {
-          "name": "reports-daily-stats",
+          "name": "reports-weekly-stats",
           "parameters": {},
           "lifespan": 0
         }
       ],
       "parameters": [],
-      "messages": [],
+      "messages": [
+        {
+          "type": 0,
+          "lang": "en",
+          "condition": "",
+          "speech": []
+        }
+      ],
       "defaultResponsePlatforms": {},
       "speech": []
     }
