@@ -16,8 +16,8 @@ let goodTotal = 0, unwellTotal = 0, anxiousTotal = 0;
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'safedito.noreply@gmail.com',
-    pass: '227E4B5C82249B624C40BA7E424432C4'
+    user: '',
+    pass: ''
   }
 });
 
@@ -26,13 +26,13 @@ function connectToDatabase() {
   console.log("method: connectToDatabase()");
   const connection = mysql.createConnection({
     // *** For Unix Socket Connection: ***
-    socketPath: `/cloudsql/safedito-chatbot-nqfoxb:us-central1:dito`,
+    socketPath: ``,
     // *** For TCP/IP Connection: ***
     // host: "HOST",
     // ip: "PORT",
-    user: "chatbot",
-    password: "P@ssw0rd!",
-    database: "safedito_db",
+    user: "",
+    password: "",
+    database: "",
   });
   return new Promise((resolve, reject) => {
     connection.connect();
@@ -303,15 +303,15 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
 
     function dingtalkLoginHandler(agent) {
       const dingtalk = new DingtalkSdk({
-        agentId: "735679653",
-        appKey: "dingr19jpkc4vqqvvirp",
+        agentId: "",
+        appKey: "",
         appSecret:
-          "NlNS3IHQCMWFTFXIB-X5S1ASYr8tUfLFwQNS3QAQUWescegpvMRNNf4Qy8-Azor8",
+          "",
       });
 
       dingtalk
         .execute("/sns/getuserinfo_bycode", {
-          body: { code: "11021" },
+          body: { code: "" },
         })
         .catch((err) => {
           console.log("Error: ", err);
