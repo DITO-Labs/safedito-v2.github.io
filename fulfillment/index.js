@@ -9,53 +9,40 @@ const nodemailer = require('nodemailer');
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
 // Custom Configurations and Variables
-let emailQuery; let phone; let healthstatus; let workcond; let rawData = '';
-let goodTotal = 0; let unwellTotal = 0; let anxiousTotal = 0;
+let emailQuery;
+
+// Cached Global Variables
+let query;
+let phone;
+let healthstatus;
+let workcond;
+let details;
+let rawData;
+let goodTotal = 0;
+let unwellTotal = 0;
+let anxiousTotal = 0;
 
 // Configuration for nodemailer
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'safedito.noreply@gmail.com',
-    pass: '227E4B5C82249B624C40BA7E424432C4'
+    user: process.env.NODEMAILER_EMAIL,
+    pass: process.env.NODEMAILER_PASSWORD
   }
 });
 
 // Configuration for MySQL Database (Google Cloud SQL)
-function connectToDatabase() {
-  console.log('method: connectToDatabase()');
-  const connection = mysql.createConnection({
-    // *** For Unix Socket Connection: ***
-    socketPath: `/cloudsql/safedito-chatbot-nqfoxb:us-central1:dito`,
-    // *** For TCP/IP Connection: ***
-    // host: "HOST",
-    // ip: "PORT",
-    user: 'chatbot',
-    password: 'P@ssw0rd!',
-    database: 'safedito_db'
-  });
-  return new Promise((resolve, reject) => {
-    connection.connect();
-    resolve(connection);
-  });
-}
-
-function saveHealthAssessment(connection, data) {
-  console.log('method: saveHealthAssessment()');
-  // TO DO: Make this transactional, rollback if a query is failed
-  const updateQuery = 'update daily_health_logs set isValid = 0 where CAST(timestamp as DATE) = CURDATE() and emp_id = \'' + data.emp_id + '\'; ';
-  console.log('Executing SQL query: ' + updateQuery);
-  connection.query(updateQuery);
-  const query = 'insert into daily_health_logs set ?';
-  console.log('Executing SQL query: ' + query, data);
-  return new Promise((resolve, reject) => {
-    connection.query(query, data,
-        (error, results, fields) => {
-          resolve(results);
-        }
-    );
-  });
-}
+const pool = mysql.createPool({
+  connectionLimit: 100,
+  // *** For Unix Socket Connection: ***
+  socketPath: `/cloudsql/safedito-chatbot-nqfoxb:us-central1:dito`,
+  // *** For TCP/IP Connection: ***
+  // host: "HOST",
+  // ip: "PORT",
+  user: 'chatbot',
+  password: process.env.SQL_PASSWORD,
+  database: 'testdito_db'
+});
 
 function getDailyStatistics(connection) {
   console.log('method: getDailyStatistics()');
@@ -91,71 +78,78 @@ function addDummyPayload(agent) {
   agent.add(new Payload(agent.UNSPECIFIED, {}));
 }
 
-function saveHealthAssessmentHandler(agent) {
-  console.log('method: saveHealthAssessmentHandler()');
-  console.log('saved data: ' + workcond + ' | ' + healthstatus + ' | ' + phone);
-  workcond = (workcond) ? workcond : agent.parameters.workcondition;
-  healthstatus = (healthstatus) ? healthstatus : agent.parameters.healthstatus;
-  phone = (phone) ? phone : agent.parameters.phone;
-  let info = '';
+function getAgentParameters(agent) {
+  console.log('method: getAgentParameters()');
 
-  console.log(agent.parameters);
-  // Decide which followup event before database query
-  if (healthstatus == 1) { // 1. Feeling Good
-    info = workcond;
-    if (workcond == 'SF') {
-      agent.setFollowupEvent('response-good-sf');
-    } else {
-      agent.setFollowupEvent('response-good-wfh');
-    }
-  } else if (healthstatus == 2) { // 2. Feeling Unwell
-    info = workcond + ' | ' + agent.parameters.details.toString();
-    if (workcond == 'SF') {
-      agent.setFollowupEvent('response-unwell-sf');
-    } else {
-      agent.setFollowupEvent('response-unwell-wfh');
-    }
-  } else if (healthstatus == 3) { // 3. Feeling Anxious
-    info = workcond + ' | ' + emailQuery;
-    agent.setFollowupEvent('send-email');
-  }
-  addDummyPayload(agent);
+  // store temp values for null checking
+  const tempQuery = agent.query;
+  const tempPhone = agent.parameters.phone;
+  const tempWorkCond = agent.parameters.workcondition;
+  const tempHealthStatus = agent.parameters.healthstatus;
+  const tempDetails = agent.parameters.details;
+  console.log('Temporary Data: ', [tempQuery, tempPhone,
+    tempWorkCond, tempHealthStatus, tempDetails]);
 
-  // collect data
-  const data = {
+  // if passed correctly, assign to global; else, use cache
+  query = (tempQuery) ? tempQuery : 'N/A';
+  phone = (tempPhone) ? tempPhone : phone;
+  healthstatus = (tempHealthStatus) ? tempHealthStatus : healthstatus;
+  details = (tempDetails) ? JSON.stringify(tempDetails) : details;
+  if (tempWorkCond == 'WFH') workcond = 1;
+  else if (tempWorkCond == 'SF') workcond = 2;
+
+  console.log('Cached Data: ', [phone, workcond, healthstatus, details]);
+
+  return {
     emp_id: phone,
     isValid: 1,
     status: healthstatus,
-    details: info
+    work_cond: workcond,
+    details: details
   };
-  console.log('Data: ' + JSON.stringify(data));
-
-  // finally, log transaction to database:
-  return connectToDatabase().then((connection) => {
-    try {
-      return saveHealthAssessment(connection, data).then((result) => {
-        connection.end();
-      });
-    } catch (error) {
-      agent.add('Exception encountered ' + error);
-    } finally {
-      workcond = healthstatus = phone = '';
-    }
-  });
 }
 
-function setPhoneHandler(agent) {
-  console.log('method: setPhoneHandler()');
-  // get dingtalk phone here if possible, for checking
-  console.log(phone);
-  if (!phone) {
-    phone = agent.parameters.phone;
-    console.log('Setting phone from parameter: ' + phone);
-  } else {
-    console.log('Getting phone from session: ' + phone);
+function insertDailyCheckHandler(agent) {
+  console.log('method: insertDailyCheckHandler()');
+  const sqlUpdateStr = 'UPDATE daily_health_logs SET isValid = 0 ' +
+    'WHERE CAST(dlog_dt as DATE) = CURDATE() AND emp_id = ?';
+  const sqlInsertStr = 'INSERT INTO daily_health_logs SET ? ';
+
+  const data = getAgentParameters(agent);
+  console.log(data);
+  console.log(JSON.stringify(data));
+
+  try {
+    pool.getConnection((error, connection) => {
+      if (error) throw error;
+      console.log('Executing Queries: ? | ?', [sqlUpdateStr, sqlInsertStr]);
+      connection.beginTransaction((err) => {
+        connection.query(sqlUpdateStr, data.emp_id, (err) => {
+          if (err) throw err; // Query uncommitted, no rollback needed
+          connection.query(sqlInsertStr, data, (err) => {
+            if (err) {
+              console.log('SQL Exception - Rolling back SQL transaction');
+              connection.rollback();
+              throw err;
+            }
+            connection.commit();
+            console.log('SQL Transaction committed');
+          });
+        });
+      });
+      connection.release();
+    });
+  } catch (error) {
+    console.log('Handled error!' + error);
+    agent.add('SQL Error' + error);
+    return;
   }
 
-  agent.setFollowupEvent('daily-health-checkin-handler');
+  // decide next intent
+  if (data.status == 1) agent.setFollowupEvent('response-good-wfh');
+  else if (data.status == 2) agent.setFollowupEvent('response-unwell-wfh');
+  else if (data.status == 3) agent.setFollowupEvent('send-email');
+  console.log(data);
   addDummyPayload(agent);
   return;
 }
@@ -188,7 +182,7 @@ function sendEmailHandler(agent) {
     from: 'SafeDITO Chatbot', // sender address
     to: 'johnpaulomataac@gmail.com', // list of receivers
     subject: 'SafeDITO: Feeling Anxious - ' + phone, // Subject line
-    html: 'Query: ' + emailQuery
+    html: 'Query: ' + query
   };
 
   console.log(mailOptions);
@@ -202,32 +196,55 @@ function sendEmailHandler(agent) {
   agent.setFollowupEvent('send-email-confirmation');
   addDummyPayload(agent);
 }
-
-function dailyChartHandler(agent) {
-  console.log('method: dailyChartHandler()');
-
-  console.log('Before Total(s): ', goodTotal, unwellTotal, anxiousTotal);
-
-  // first, get table from database:
-  connectToDatabase().then((connection) => {
-    try {
-      getDailyStatistics(connection).then((result) => {
-        connection.end();
-        rawData = JSON.stringify(result);
-        result.forEach(function(row) {
-          if (row.status == 1) goodTotal = (row.total) ? row.total : 0;
-          else if (row.status == 2) unwellTotal = (row.total) ? row.total : 0;
-          else if (row.status == 3) anxiousTotal = (row.total) ? row.total : 0;
+/**
+ * This function will return a url link to quickchart.io
+ * @param {*} chartType type of chart (bar, pie, line, etc.)
+ * @param {*} chartData json for chart's x and y axis
+ * @param {*} chartQuery sql query
+ */
+function chartifyData(chartType, chartData, chartQuery) {
+  console.log('method: chartifyData()');
+  try {
+    pool.getConnection((error, connection) => {
+      if (error) throw error;
+      console.log('Executing Queries: ? | ?', chartQuery);
+      connection.query(chartQuery, (error, result) => {
+        if (error) throw error;
+        console.log(result);
+        result.forEach((row) => {
+          console.log(test);
         });
-        console.log('Results: ' + rawData);
       });
-    } catch (error) {
-      agent.add('Exception encountered ' + error);
-    }
-  });
+      connection.release();
+    });
+  } catch (error) {
+    console.log('Handled error!' + error);
+    agent.add('SQL Error' + error);
+    return;
+  }
+  return;
+}
 
-  console.log('Query completed: ' + rawData);
-  console.log('After Total(s): ', goodTotal, unwellTotal, anxiousTotal);
+function selectDailyChartHandler(agent) {
+  console.log('method: selectDailyChartHandler()');
+
+  pool.getConnection((error, connection) => {
+    if (error) throw error;
+    const sqlSelectStr = 'SELECT status, count(emp_id) as total FROM daily_health_logs WHERE isValid = 1 AND CAST(dlog_dt as DATE) = CURDATE() GROUP BY status;';
+    console.log('Executing Queries: ', [sqlSelectStr]);
+    connection.query(sqlSelectStr, (err, result) => {
+      if (err) throw error;
+      rawData = JSON.stringify(result);
+      console.log(rawData);
+      result.forEach(function(row) {
+        if (row.status == 1) goodTotal = (row.total) ? row.total : 0;
+        else if (row.status == 2) unwellTotal = (row.total) ? row.total : 0;
+        else if (row.status == 3) anxiousTotal = (row.total) ? row.total : 0;
+      });
+      connection.end();
+      console.log('Results: ' + rawData);
+    });
+  });
 
   const dataChart = {
     type: 'pie', data: {
@@ -279,13 +296,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       console.log('DF Request Headers: ' + JSON.stringify(request.headers));
       console.log('DF Request Body: ' + JSON.stringify(request.body));
 
-      // Run the proper function handler based on the matched Dialogflow intent name
+      // Run the function handler based on the matched Dialogflow intent name
       const intentMap = new Map();
-      intentMap.set('daily-health.check-in.work-condition', saveHealthAssessmentHandler);
+      intentMap.set('daily-health.check-in.work-condition', insertDailyCheckHandler);
       intentMap.set('send-email', sendEmailHandler);
       intentMap.set('daily-health.checkin', getPhoneHandler);
       intentMap.set('daily-health.check-in.anxious-query', getQueryHandler);
-      intentMap.set('reports.daily-stats', dailyChartHandler);
+      intentMap.set('reports.daily-stats', selectDailyChartHandler);
       intentMap.set('reports.weekly-stats', weeklyChartHandler);
       agent.handleRequest(intentMap);
     }
