@@ -17,10 +17,9 @@ let phone;
 let healthstatus;
 let workcond;
 let details;
-let rawData;
-let goodTotal = 0;
-let unwellTotal = 0;
-let anxiousTotal = 0;
+
+// Lazy load
+let rawDailyChart; const isRawDailyUpdated = false;
 
 // Configuration for nodemailer
 const transporter = nodemailer.createTransport({
@@ -35,7 +34,7 @@ const transporter = nodemailer.createTransport({
 const pool = mysql.createPool({
   connectionLimit: 100,
   // *** For Unix Socket Connection: ***
-  socketPath: `/cloudsql/safedito-chatbot-nqfoxb:us-central1:dito`,
+  socketPath: process.env.SQL_SOCKETPATH,
   // *** For TCP/IP Connection: ***
   // host: "HOST",
   // ip: "PORT",
@@ -43,36 +42,6 @@ const pool = mysql.createPool({
   password: process.env.SQL_PASSWORD,
   database: 'testdito_db'
 });
-
-function getDailyStatistics(connection) {
-  console.log('method: getDailyStatistics()');
-
-  // Get data from sql
-  const query = `SELECT status, count(emp_id) as total FROM daily_health_logs WHERE isValid = 1 AND CAST(timestamp as DATE) = CURDATE() GROUP BY status;`;
-
-  console.log('Executing SQL query: ' + query);
-  return new Promise((resolve, reject) => {
-    connection.query(query, (error, results, fields) => {
-      console.log(results);
-      resolve(results);
-    });
-  });
-}
-
-function getWeeklyStatistics(connection) {
-  console.log('method: getWeeklyStatistics()');
-
-  // Get data from sql
-  const query = `SELECT status, count(emp_id) as total FROM daily_health_logs WHERE isValid = 1 AND CAST(timestamp as DATE) = CURDATE() GROUP BY status;`;
-
-  console.log('Executing SQL query: ' + query);
-  return new Promise((resolve, reject) => {
-    connection.query(query, (error, results, fields) => {
-      console.log(results);
-      resolve(results);
-    });
-  });
-}
 
 function addDummyPayload(agent) {
   agent.add(new Payload(agent.UNSPECIFIED, {}));
@@ -121,11 +90,17 @@ function insertDailyCheckHandler(agent) {
 
   try {
     pool.getConnection((error, connection) => {
-      if (error) throw error;
+      if (error) {
+        console.log('Error in connection - ' + error);
+        throw error;
+      }
       console.log('Executing Queries: ? | ?', [sqlUpdateStr, sqlInsertStr]);
       connection.beginTransaction((err) => {
         connection.query(sqlUpdateStr, data.emp_id, (err) => {
-          if (err) throw err; // Query uncommitted, no rollback needed
+          if (err) {
+            console.log('Error in connection - ' + err);
+            throw err; // Query uncommitted, no rollback needed
+          }
           connection.query(sqlInsertStr, data, (err) => {
             if (err) {
               console.log('SQL Exception - Rolling back SQL transaction');
@@ -196,79 +171,86 @@ function sendEmailHandler(agent) {
   agent.setFollowupEvent('send-email-confirmation');
   addDummyPayload(agent);
 }
-/**
- * This function will return a url link to quickchart.io
- * @param {*} chartType type of chart (bar, pie, line, etc.)
- * @param {*} chartData json for chart's x and y axis
- * @param {*} chartQuery sql query
- */
-function chartifyData(chartType, chartData, chartQuery) {
-  console.log('method: chartifyData()');
-  try {
+
+function chartifyDataSql(chartQuery, chartKeys) {
+  console.log('method: chartifyDataSql()');
+  const chartValues = [];
+  return new Promise((resolve, reject) => {
     pool.getConnection((error, connection) => {
-      if (error) throw error;
+      if (error) {
+        console.log('Error in connection - ' + error);
+        reject(error);
+      }
+
       console.log('Executing Queries: ? | ?', chartQuery);
       connection.query(chartQuery, (error, result) => {
-        if (error) throw error;
-        console.log(result);
+        if (error) {
+          console.log('Error in executing query - ' + error);
+          reject(error);
+        }
+        console.log('Resultset: ' + JSON.stringify(result));
         result.forEach((row) => {
-          console.log(test);
+          for (let i = 0; i < chartKeys.length; i++) {
+            if (row.status == chartKeys[i]) {
+              chartValues.push(row.total);
+            }
+          }
         });
       });
       connection.release();
+      console.log('Query Successful: ' + chartValues);
+      resolve(chartValues);
     });
-  } catch (error) {
+  });
+}
+
+/**
+ * For generating charts, output is displayed on Image rich content
+ *
+ * @param {String} chartType Chart Type: pie, bar, etc.
+ * @param {JSON} chartData Chart Label {'label1': pk1, 'label2': pk2, ...}
+ * @param {String} chartQuery SQL Query
+ * @return {String} Quickchart.io Graph Link
+ */
+function chartifyData(chartType, chartData, chartQuery) {
+  console.log('method: chartifyData()');
+
+  const chartTitle = Object.keys(chartData); // Get labels of the chart
+  const chartKeys = Object.values(chartData); // Get primary keys of the chart
+  console.log('Titles and Status: ', [chartTitle, chartKeys]);
+
+  chartifyDataSql(chartQuery, chartKeys).then((chartValues) => {
+    const chartOutput = {
+      type: chartType, data: {
+        datasets: [{data: chartValues}],
+        labels: chartTitle
+      }
+    };
+    console.log('QuickChart.io: ' + JSON.stringify(chartOutput));
+    return 'https://quickchart.io/chart?bkg=white&c=' +
+      encodeURIComponent(JSON.stringify(chartOutput));
+  }).catch((error) => {
     console.log('Handled error!' + error);
-    agent.add('SQL Error' + error);
-    return;
-  }
-  return;
+    return null;
+  });
 }
 
 function selectDailyChartHandler(agent) {
   console.log('method: selectDailyChartHandler()');
 
-  pool.getConnection((error, connection) => {
-    if (error) throw error;
-    const sqlSelectStr = 'SELECT status, count(emp_id) as total FROM daily_health_logs WHERE isValid = 1 AND CAST(dlog_dt as DATE) = CURDATE() GROUP BY status;';
-    console.log('Executing Queries: ', [sqlSelectStr]);
-    connection.query(sqlSelectStr, (err, result) => {
-      if (err) throw error;
-      rawData = JSON.stringify(result);
-      console.log(rawData);
-      result.forEach(function(row) {
-        if (row.status == 1) goodTotal = (row.total) ? row.total : 0;
-        else if (row.status == 2) unwellTotal = (row.total) ? row.total : 0;
-        else if (row.status == 3) anxiousTotal = (row.total) ? row.total : 0;
-      });
-      connection.end();
-      console.log('Results: ' + rawData);
-    });
-  });
-
-  const dataChart = {
-    type: 'pie', data: {
-      datasets: [{data: [goodTotal, unwellTotal, anxiousTotal]}],
-      labels: ['Good', 'Unwell', 'Anxious ']
-    }
-  };
-  const quickChart = 'https://quickchart.io/chart?bkg=white&c=' +
-    encodeURIComponent(JSON.stringify(dataChart));
-
-  console.log('QuickChart.io: ' + quickChart);
+  // Generate Chart URL
   const ctx = {
     'name': 'generate-chart', 'lifespan': 1,
-    'parameters': {'urlChart': quickChart, 'today': new Date().toLocaleString()}
+    'parameters': {'urlChart': rawDailyChart, 'today': new Date().toLocaleString()}
   };
 
   agent.setContext(ctx);
   agent.setFollowupEvent('daily-stats-out');
+  return;
 }
 
 function weeklyChartHandler(agent) {
   console.log('method: weeklyChartHandler()');
-
-  console.log('Before Total(s): ', goodTotal, unwellTotal, anxiousTotal);
 
   const dataChart = {
     type: 'bar', data: {
@@ -289,6 +271,54 @@ function weeklyChartHandler(agent) {
   agent.setFollowupEvent('weekly-stats-out');
 }
 
+function getRawDailyChart() {
+  console.log('method: getRawDailyChart()');
+
+  const data = {'good': 1, 'unwell': 2, 'anxious': 3};
+  const query = `SELECT status, count(emp_id) as total FROM daily_health_logs` +
+    ` WHERE isValid = 1 AND CAST(dlog_dt as DATE) = CURDATE() GROUP BY status;`;
+
+  return new Promise((resolve, reject) => {
+
+  });
+
+  pool.getConnection((error, connection) => {
+    if (error) {
+      console.log('Error in connection - ' + error);
+      reject(error);
+    }
+
+    console.log('Executing Queries: ? | ?', chartQuery);
+    connection.query(chartQuery, (error, result) => {
+      if (error) {
+        console.log('Error in executing query - ' + error);
+        reject(error);
+      }
+      console.log('Resultset: ' + JSON.stringify(result));
+      result.forEach((row) => {
+        for (let i = 0; i < chartKeys.length; i++) {
+          if (row.status == chartKeys[i]) {
+            chartValues.push(row.total);
+          }
+        }
+      });
+    });
+    connection.release();
+    console.log('Query Successful: ' + chartValues);
+    resolve(chartValues);
+  });
+  // Generate Chart URL
+  return chartifyData('pie', data, query);
+}
+
+function initializeChatbotHandler(agent) {
+  // Lazy load the 'Raw' functions on background:
+  if (!isRawDailyUpdated) rawDailyChart = getRawDailyChart();
+
+  agent.setFollowupEvent('welcome-message');
+  addDummyPayload(agent);
+}
+
 // Dialogflow intent mapping
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     (request, response) => {
@@ -298,6 +328,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
 
       // Run the function handler based on the matched Dialogflow intent name
       const intentMap = new Map();
+      intentMap.set('welcome-lazyload', initializeChatbotHandler);
       intentMap.set('daily-health.check-in.work-condition', insertDailyCheckHandler);
       intentMap.set('send-email', sendEmailHandler);
       intentMap.set('daily-health.checkin', getPhoneHandler);
