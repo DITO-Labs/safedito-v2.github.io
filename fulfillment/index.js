@@ -1,8 +1,8 @@
 'use strict';
 
 const functions = require('firebase-functions');
-const {WebhookClient} = require('dialogflow-fulfillment');
-const {Payload} = require('dialogflow-fulfillment');
+const { WebhookClient } = require('dialogflow-fulfillment');
+const { Payload } = require('dialogflow-fulfillment');
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
 
@@ -12,6 +12,7 @@ process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 let emailQuery;
 
 // Cached Global Variables
+const chartValues = [];
 let query;
 let phone;
 let healthstatus;
@@ -19,7 +20,7 @@ let workcond;
 let details;
 
 // Lazy load
-let rawDailyChart; const isRawDailyUpdated = false;
+const isRawDailyUpdated = false;
 
 // Configuration for nodemailer
 const transporter = nodemailer.createTransport({
@@ -42,6 +43,19 @@ const pool = mysql.createPool({
   password: process.env.SQL_PASSWORD,
   database: 'testdito_db'
 });
+
+function connectToDatabase() {
+  console.log('method connectToDatabase()');
+  return new Promise((resolve, reject) => {
+    return pool.getConnection((error, connection) => {
+      if (!error) resolve(connection);
+      else {
+        console.log('Error at connectToDatabase(): ' + error);
+        reject(error);
+      }
+    });
+  });
+}
 
 function addDummyPayload(agent) {
   agent.add(new Payload(agent.UNSPECIFIED, {}));
@@ -161,7 +175,7 @@ function sendEmailHandler(agent) {
   };
 
   console.log(mailOptions);
-  transporter.sendMail(mailOptions, function(err, info) {
+  transporter.sendMail(mailOptions, function (err, info) {
     if (err) {
       agent.add('Unable to send email - ' + err);
       console.log(err);
@@ -172,81 +186,29 @@ function sendEmailHandler(agent) {
   addDummyPayload(agent);
 }
 
-function chartifyDataSql(chartQuery, chartKeys) {
-  console.log('method: chartifyDataSql()');
-  const chartValues = [];
-  return new Promise((resolve, reject) => {
-    pool.getConnection((error, connection) => {
-      if (error) {
-        console.log('Error in connection - ' + error);
-        reject(error);
-      }
-
-      console.log('Executing Queries: ? | ?', chartQuery);
-      connection.query(chartQuery, (error, result) => {
-        if (error) {
-          console.log('Error in executing query - ' + error);
-          reject(error);
-        }
-        console.log('Resultset: ' + JSON.stringify(result));
-        result.forEach((row) => {
-          for (let i = 0; i < chartKeys.length; i++) {
-            if (row.status == chartKeys[i]) {
-              chartValues.push(row.total);
-            }
-          }
-        });
-      });
-      connection.release();
-      console.log('Query Successful: ' + chartValues);
-      resolve(chartValues);
-    });
-  });
-}
-
-/**
- * For generating charts, output is displayed on Image rich content
- *
- * @param {String} chartType Chart Type: pie, bar, etc.
- * @param {JSON} chartData Chart Label {'label1': pk1, 'label2': pk2, ...}
- * @param {String} chartQuery SQL Query
- * @return {String} Quickchart.io Graph Link
- */
-function chartifyData(chartType, chartData, chartQuery) {
-  console.log('method: chartifyData()');
-
-  const chartTitle = Object.keys(chartData); // Get labels of the chart
-  const chartKeys = Object.values(chartData); // Get primary keys of the chart
-  console.log('Titles and Status: ', [chartTitle, chartKeys]);
-
-  chartifyDataSql(chartQuery, chartKeys).then((chartValues) => {
-    const chartOutput = {
-      type: chartType, data: {
-        datasets: [{data: chartValues}],
-        labels: chartTitle
-      }
-    };
-    console.log('QuickChart.io: ' + JSON.stringify(chartOutput));
-    return 'https://quickchart.io/chart?bkg=white&c=' +
-      encodeURIComponent(JSON.stringify(chartOutput));
-  }).catch((error) => {
-    console.log('Handled error!' + error);
-    return null;
-  });
-}
-
 function selectDailyChartHandler(agent) {
   console.log('method: selectDailyChartHandler()');
 
-  // Generate Chart URL
-  const ctx = {
-    'name': 'generate-chart', 'lifespan': 1,
-    'parameters': {'urlChart': rawDailyChart, 'today': new Date().toLocaleString()}
+  // lazy loaded chartValues goes into chartOutput
+  const chartOutput = {
+    type: 'pie', data: {
+      datasets: [{ data: chartValues }],
+      labels: ['Good', 'Unwell', 'Anxious']
+    }
   };
 
+  // now let's generated the chart url
+  console.log('QuickChart.io: ' + JSON.stringify(chartOutput));
+  const generatedUrl = 'https://quickchart.io/chart?bkg=white&c=' +
+    encodeURIComponent(JSON.stringify(chartOutput));
+
+  // pass it on dialogflow context
+  const ctx = {
+    'name': 'generate-chart', 'lifespan': 1,
+    'parameters': { 'urlChart': generatedUrl, 'today': new Date().toLocaleString() }
+  };
   agent.setContext(ctx);
   agent.setFollowupEvent('daily-stats-out');
-  return;
 }
 
 function weeklyChartHandler(agent) {
@@ -254,7 +216,7 @@ function weeklyChartHandler(agent) {
 
   const dataChart = {
     type: 'bar', data: {
-      datasets: [{data: [18, 27, 30, 15, 12]}],
+      datasets: [{ data: [18, 27, 30, 15, 12] }],
       labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
     }
   };
@@ -264,37 +226,43 @@ function weeklyChartHandler(agent) {
   console.log('QuickChart.io: ' + quickChart);
   const ctx = {
     'name': 'generate-chart', 'lifespan': 1,
-    'parameters': {'urlChart': quickChart, 'today': new Date().toLocaleString()}
+    'parameters': { 'urlChart': quickChart, 'today': new Date().toLocaleString() }
   };
 
   agent.setContext(ctx);
   agent.setFollowupEvent('weekly-stats-out');
 }
 
+/**
+ * Lazy load the Daily Statistics ChartValues
+ */
 function getRawDailyChart() {
   console.log('method: getRawDailyChart()');
 
-  const data = {'good': 1, 'unwell': 2, 'anxious': 3};
-  const query = `SELECT status, count(emp_id) as total FROM daily_health_logs` +
+  const chartData = { 'good': 1, 'unwell': 2, 'anxious': 3 };
+  const chartQuery = `SELECT status, count(emp_id) as total FROM daily_health_logs` +
     ` WHERE isValid = 1 AND CAST(dlog_dt as DATE) = CURDATE() GROUP BY status;`;
 
-  return new Promise((resolve, reject) => {
+  // Parse chartData, get label title and pk
+  const chartTitle = Object.keys(chartData); // Get labels of the chart
+  const chartKeys = Object.values(chartData); // Get primary keys of the chart
 
-  });
+  console.log('Titles and Status: ', [chartTitle, chartKeys]);
 
   pool.getConnection((error, connection) => {
     if (error) {
       console.log('Error in connection - ' + error);
-      reject(error);
+      throw error;
     }
 
     console.log('Executing Queries: ? | ?', chartQuery);
     connection.query(chartQuery, (error, result) => {
       if (error) {
         console.log('Error in executing query - ' + error);
-        reject(error);
+        throw error;
       }
       console.log('Resultset: ' + JSON.stringify(result));
+      console.log('Before ChartValues: ' + chartValues);
       result.forEach((row) => {
         for (let i = 0; i < chartKeys.length; i++) {
           if (row.status == chartKeys[i]) {
@@ -302,39 +270,39 @@ function getRawDailyChart() {
           }
         }
       });
+      connection.release();
+      console.log('Query Successful: ' + chartValues);
     });
-    connection.release();
-    console.log('Query Successful: ' + chartValues);
-    resolve(chartValues);
   });
-  // Generate Chart URL
-  return chartifyData('pie', data, query);
 }
 
 function initializeChatbotHandler(agent) {
-  // Lazy load the 'Raw' functions on background:
-  if (!isRawDailyUpdated) rawDailyChart = getRawDailyChart();
+  // Lazy load the 'Raw' functions on background, depending on user access:
+  if (!isRawDailyUpdated) getRawDailyChart(); // for HR admin members
 
-  agent.setFollowupEvent('welcome-message');
+  // Check for user permissions
+
+  agent.setFollowupEvent('welcome-display');
   addDummyPayload(agent);
 }
 
 // Dialogflow intent mapping
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
-    (request, response) => {
-      const agent = new WebhookClient({request, response});
-      console.log('DF Request Headers: ' + JSON.stringify(request.headers));
-      console.log('DF Request Body: ' + JSON.stringify(request.body));
+  (request, response) => {
+    const agent = new WebhookClient({ request, response });
+    console.log('DF Request Headers: ' + JSON.stringify(request.headers));
+    console.log('DF Request Body: ' + JSON.stringify(request.body));
 
-      // Run the function handler based on the matched Dialogflow intent name
-      const intentMap = new Map();
-      intentMap.set('welcome-lazyload', initializeChatbotHandler);
-      intentMap.set('daily-health.check-in.work-condition', insertDailyCheckHandler);
-      intentMap.set('send-email', sendEmailHandler);
-      intentMap.set('daily-health.checkin', getPhoneHandler);
-      intentMap.set('daily-health.check-in.anxious-query', getQueryHandler);
-      intentMap.set('reports.daily-stats', selectDailyChartHandler);
-      intentMap.set('reports.weekly-stats', weeklyChartHandler);
-      agent.handleRequest(intentMap);
-    }
+    // Run the function handler based on the matched Dialogflow intent name
+    const intentMap = new Map();
+    intentMap.set('welcome-init', initializeChatbotHandler);
+    intentMap.set('welcome-lazyload', initializeChatbotHandler);
+    intentMap.set('daily-health.check-in.work-condition', insertDailyCheckHandler);
+    intentMap.set('send-email', sendEmailHandler);
+    intentMap.set('daily-health.checkin', getPhoneHandler);
+    intentMap.set('daily-health.check-in.anxious-query', getQueryHandler);
+    intentMap.set('reports.daily-stats', selectDailyChartHandler);
+    intentMap.set('reports.weekly-stats', weeklyChartHandler);
+    agent.handleRequest(intentMap);
+  }
 );
